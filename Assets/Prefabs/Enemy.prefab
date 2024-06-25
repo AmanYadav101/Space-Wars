@@ -274,3 +274,4 @@ MonoBehaviour:
   enemy: {fileID: 8313321182695970449}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
   enemyProjectileClone: {fileID: 0}
+  speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}

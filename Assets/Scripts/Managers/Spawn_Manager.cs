@@ -8,6 +8,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject player;
     public GameObject projectile;
     
+    
     private GameObject projectileClone;
     [SerializeField] private float shootCooldown = 1f;
     private float lastShotTime;
@@ -34,4 +35,5 @@ public class SpawnManager : MonoBehaviour
 
         }
     }
+    
 }

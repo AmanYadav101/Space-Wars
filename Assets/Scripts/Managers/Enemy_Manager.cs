@@ -10,6 +10,9 @@ public class Enemy_Manager : MonoBehaviour
     public GameObject enemy;
     public GameObject enemyProjectile;
     public GameObject enemyProjectileClone;
+    public GameObject speedUpPowerUpPrefab;
+    private float dropChance = 0.9f;
+    SpawnManager spawnManager;
     PolygonCollider2D polygonCollider2D;
 
         
@@ -25,6 +28,10 @@ public class Enemy_Manager : MonoBehaviour
     {
         EnemyFireProjectile();
     }
+    private void Awake()
+    {
+        spawnManager= GameObject.FindFirstObjectByType<SpawnManager>().GetComponent<SpawnManager>();
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Laser")
@@ -38,6 +45,9 @@ public class Enemy_Manager : MonoBehaviour
     {
         animator.SetBool("Destroy", true);
         polygonCollider2D.isTrigger = true;//Setting the collider to trigger so that the other lasers won't interact with the previous gameobject thats still being destroyed.
+        
+        DropPowerUp();
+        
         yield return new WaitForSeconds(destroyTime);
         Destroy(gameObject);
 
@@ -61,6 +71,15 @@ public class Enemy_Manager : MonoBehaviour
         if (Random.Range(0f,1000)<1)
         {
         enemyProjectileClone = Instantiate(enemyProjectile, transform.position, enemy.transform.rotation);
+        }
+    }
+
+    void DropPowerUp()
+    {
+        float randomValue = Random.Range(0f, 1f);
+        if (randomValue <= dropChance)
+        {
+            Instantiate(speedUpPowerUpPrefab, gameObject.transform.position, gameObject.transform.rotation);
         }
     }
 

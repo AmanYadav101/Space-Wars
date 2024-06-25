@@ -8,7 +8,6 @@ public class Speed_Powerup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
     private void Awake()
     {
@@ -29,6 +28,7 @@ public class Speed_Powerup : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             StartCoroutine(SpeedPowerupCoroutine());
+
         }
     }
     IEnumerator SpeedPowerupCoroutine()
@@ -37,7 +37,6 @@ public class Speed_Powerup : MonoBehaviour
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<PolygonCollider2D>().enabled = false;
         yield return new WaitForSeconds(4f);
-       
         player_manager.SetMoveSpeed(player_manager.GetNormalMoveSpeed());
         Destroy(gameObject);
 

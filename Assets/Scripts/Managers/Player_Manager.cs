@@ -7,11 +7,15 @@ using UnityEngine;
 public class Player_Manager : MonoBehaviour
 {
     public Animator animator;
+    public Animator FireAnimator;
     private int moveSpeed = 5;
     private Camera mainCamera;
     private int normalSpeed;
     private int newSpeed = 10;
-
+    public GameObject leftWingFire;
+    public GameObject rightWingFire;
+    public GameObject middleFire;
+    public GameObject thrusters;
     //Health variables
     int maxHealth = 100;
     public int currentHealth;
@@ -23,6 +27,11 @@ public class Player_Manager : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         mainCamera = Camera.main;
+        leftWingFire.SetActive(false);
+        rightWingFire.SetActive(false);
+        middleFire.SetActive(false);
+        thrusters.SetActive(false);
+
     }
 
 
@@ -31,6 +40,8 @@ public class Player_Manager : MonoBehaviour
     {
         Movement();
         TeleportPlayer();
+        TurnOnFire();
+        TurnOnThrusters();
     }
 
 
@@ -107,6 +118,48 @@ public class Player_Manager : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+        }
+    }
+
+    void TurnOnThrusters()
+    {   if(moveSpeed == newSpeed) 
+        { 
+        thrusters.SetActive(true);
+        }
+        else
+        {
+            thrusters.SetActive(false);
+        }
+
+
+    }
+    void TurnOnFire()
+    {
+        if (currentHealth <= 20)
+        {
+            leftWingFire.SetActive(true);
+            rightWingFire.SetActive(true);
+            middleFire.SetActive(true);
+        }
+        else if (currentHealth <= 40)
+        {
+            leftWingFire.SetActive(true);
+            rightWingFire.SetActive(true);
+            middleFire.SetActive(false);
+
+        }
+        else if (currentHealth <= 60) 
+        { 
+            leftWingFire.SetActive(false);
+            rightWingFire.SetActive(true);
+            middleFire.SetActive(false);
+
+        }
+        else
+        {
+            leftWingFire.SetActive(false);
+            rightWingFire.SetActive(false);
+            middleFire.SetActive(false);
         }
     }
     public int GetMoveSpeed()
