@@ -2,16 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Speed_Powerup : MonoBehaviour
+public class Shield_PowerUp : MonoBehaviour
 {
     Player_Manager player_manager;
-   
+    // Start is called before the first frame update
+    void Start()
+    {
+        player_manager.SetIsInvincible(false);
+    }
+
     private void Awake()
     {
         player_manager = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Manager>();
     }
 
-   
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Boundry"))
@@ -20,19 +25,18 @@ public class Speed_Powerup : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(SpeedPowerupCoroutine());
-
+            StartCoroutine(ShieldPowerUpCoroutine());
         }
     }
-    IEnumerator SpeedPowerupCoroutine()
+    IEnumerator ShieldPowerUpCoroutine()//CoRoutine for setting the isInvincible bool in the player_manager to true and false after a couple of secs and destroy it afterwards.
     {
-        player_manager.SetMoveSpeed(player_manager.GetNewMoveSpeed());
+
+        player_manager.SetIsInvincible(true);
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<PolygonCollider2D>().enabled = false;
         yield return new WaitForSeconds(4f);
-        player_manager.SetMoveSpeed(player_manager.GetNormalMoveSpeed());
+        player_manager.SetIsInvincible(false);
+     
         Destroy(gameObject);
-
-
     }
 }

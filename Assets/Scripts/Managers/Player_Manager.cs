@@ -7,11 +7,13 @@ using UnityEngine;
 public class Player_Manager : MonoBehaviour
 {
     public Animator animator;
-    public Animator FireAnimator;
-    private int moveSpeed = 5;
     private Camera mainCamera;
+    //Speed vars
+    private int moveSpeed = 5;
     private int normalSpeed;
     private int newSpeed = 10;
+    //Fire Objects
+    public Animator FireAnimator;
     public GameObject leftWingFire;
     public GameObject rightWingFire;
     public GameObject middleFire;
@@ -20,6 +22,10 @@ public class Player_Manager : MonoBehaviour
     int maxHealth = 100;
     public int currentHealth;
     public Health_Bar healthBar;
+    //Shield
+    public GameObject shield;
+    private bool isInvincible;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,9 +37,15 @@ public class Player_Manager : MonoBehaviour
         rightWingFire.SetActive(false);
         middleFire.SetActive(false);
         thrusters.SetActive(false);
+        shield.SetActive(false);
 
     }
 
+    private void Awake()
+    {
+ 
+  
+    }
 
     // Update is called once per frame
     void Update()
@@ -42,12 +54,13 @@ public class Player_Manager : MonoBehaviour
         TeleportPlayer();
         TurnOnFire();
         TurnOnThrusters();
+        TurnOnShield();//Turns on the shield when the IsInvincible boolean gets to true in the Shield_Powerup Script
     }
 
 
     void Movement()
     {
-        //checks if the ship is moving or not
+        //checks if the ship is moving or not. Used for playing different animations from the animator
         bool isMoving = false;
 
 
@@ -71,7 +84,7 @@ public class Player_Manager : MonoBehaviour
             animator.SetInteger("Turn", 1);
             isMoving = true;
         }
-        if (!isMoving)
+        if (!isMoving)// making the Turn parameter from the animator to 0 so that ideal animation can be played if no movement is happening.
         {
             //for making the ship back to the ideal position
             animator.SetInteger("Turn", 0);
@@ -103,37 +116,39 @@ public class Player_Manager : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy Laser"))
         {
             Destroy(collision.gameObject);
-            
-            if (currentHealth > 0)
-            {   
+
+             if (currentHealth > 0)//Takes Damage if health is greater than 0 and updates
+                                       //the health bar based on the health.
+             {   
                 currentHealth -= 20;
                 healthBar.SetHealth(currentHealth);
-                Debug.Log(currentHealth);if (currentHealth <= 0)
-            {
-                Destroy(gameObject);
-            }
+
+                if (currentHealth <= 0)//if statement inside this else if so that we check if the current health is 0 or less then 0
+                                       //or else the player will still be alive at 0 health until next projectile hits it.
+                    {
+                        Destroy(gameObject);
+                    }
              
-            }
+             }
             else if (currentHealth <= 0)
             {
                 Destroy(gameObject);
             }
         }
     }
-
+    
+    //Turns on the Thrusters animation when the moveSpeed gets equals to the newSpeed.
     void TurnOnThrusters()
     {   if(moveSpeed == newSpeed) 
         { 
-        thrusters.SetActive(true);
+            thrusters.SetActive(true);
         }
         else
         {
             thrusters.SetActive(false);
         }
-
-
     }
-    void TurnOnFire()
+    void TurnOnFire()//Function for activating the fire based on the health of the player.
     {
         if (currentHealth <= 20)
         {
@@ -162,6 +177,25 @@ public class Player_Manager : MonoBehaviour
             middleFire.SetActive(false);
         }
     }
+
+
+    //Turns on the Shields if the isInvincible bool is true.
+    void TurnOnShield()
+    {
+        if (currentHealth > 0 && isInvincible)
+        {
+            shield.SetActive(true);
+        }
+        else
+        {
+            shield.SetActive(false);
+        }
+
+    }
+
+    //Getters and Setters
+    
+    //Starting Move Speed
     public int GetMoveSpeed()
     {
         return moveSpeed;
@@ -170,6 +204,8 @@ public class Player_Manager : MonoBehaviour
     {
         moveSpeed = speed;
     }
+
+    //Normal Move Speed
     public int GetNormalMoveSpeed()
     {
         return normalSpeed;
@@ -178,13 +214,23 @@ public class Player_Manager : MonoBehaviour
     {
         normalSpeed = speed;
     }
+
+    //New Move Speed
     public int GetNewMoveSpeed()
     {
         return newSpeed;
     }
-    public void SetNewSpeed(int speed)
+    public void SetNewMoveSpeed(int speed)
     {
         newSpeed = speed;
+    }
+
+    //Shield Invincible
+    public void SetIsInvincible(bool invincible) { 
+        isInvincible = invincible;
+    }
+    public bool GetIsInvincible() { 
+        return isInvincible;
     }
 }
 

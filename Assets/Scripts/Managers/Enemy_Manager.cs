@@ -11,7 +11,8 @@ public class Enemy_Manager : MonoBehaviour
     public GameObject enemyProjectile;
     public GameObject enemyProjectileClone;
     public GameObject speedUpPowerUpPrefab;
-    private float dropChance = 0.9f;
+    public GameObject shieldPowerUpPrefab;
+    private float dropChance = 1f;
     SpawnManager spawnManager;
     PolygonCollider2D polygonCollider2D;
 
@@ -68,7 +69,7 @@ public class Enemy_Manager : MonoBehaviour
 
     void EnemyFireProjectile()
     {
-        if (Random.Range(0f,1000)<1)
+        if (Random.Range(0f,1000)<0.1f)
         {
         enemyProjectileClone = Instantiate(enemyProjectile, transform.position, enemy.transform.rotation);
         }
@@ -77,11 +78,18 @@ public class Enemy_Manager : MonoBehaviour
     void DropPowerUp()
     {
         float randomValue = Random.Range(0f, 1f);
+         
         if (randomValue <= dropChance)
         {
+            int randomValueForWhichPowerUpToDrop = Random.Range(0, 2);
+            if (randomValueForWhichPowerUpToDrop == 0) { 
             Instantiate(speedUpPowerUpPrefab, gameObject.transform.position, gameObject.transform.rotation);
+            }
+            else if(randomValueForWhichPowerUpToDrop == 1)
+            {
+                Instantiate(shieldPowerUpPrefab,gameObject.transform.position,gameObject.transform.rotation);
+            }
         }
     }
 
 }
-/*new Vector3(enemy.transform.position.x, enemy.transform.position.y + 1f, 0)*/

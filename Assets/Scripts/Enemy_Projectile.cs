@@ -25,6 +25,10 @@ public class Enemy_Projectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (collision.gameObject.CompareTag("Shield"))
+        {
+            Destroy(gameObject);
+        }
         /*if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
