@@ -25,7 +25,7 @@ public class Player_Manager : MonoBehaviour
     //Shield
     public GameObject shield;
     private bool isInvincible=false;
-
+    PolygonCollider2D polygonCollider2D;
     bool isMoving = false;
 
     bool isMoveingLeft = false;
@@ -43,8 +43,8 @@ public class Player_Manager : MonoBehaviour
         middleFire.SetActive(false);
         thrusters.SetActive(false);
         shield.SetActive(false);
-        Debug.Log("Start Health:- " + currentHealth);
-    }
+polygonCollider2D= gameObject.GetComponent<PolygonCollider2D>();
+            }
 
     private void Awake()
     {
@@ -147,13 +147,13 @@ public class Player_Manager : MonoBehaviour
                 if (currentHealth <= 0)//if statement inside this else if so that we check if the current health is 0 or less then 0
                                        //or else the player will still be alive at 0 health until next projectile hits it.
                     {
-                        Destroy(gameObject);
-                    }
-             
-             }
+                    StartCoroutine(DestroyPlayer());
+                }
+
+            }
             else if (currentHealth <= 0)
             {
-                Destroy(gameObject);
+                StartCoroutine(DestroyPlayer());
             }
         }
     }
@@ -171,16 +171,29 @@ public class Player_Manager : MonoBehaviour
                 healthBar.SetHealth(currentHealth);
                 if (currentHealth <= 0)
                 {
-                    Destroy(gameObject);
+                    StartCoroutine(DestroyPlayer());
                 }
             }
             else if (currentHealth <= 0)
             {
-                Destroy(gameObject);
+                StartCoroutine(DestroyPlayer());
             }
         }
     }
 
+    IEnumerator DestroyPlayer()
+    {
+        polygonCollider2D.isTrigger = true;
+        leftWingFire.SetActive(false);
+        rightWingFire.SetActive(false);
+        middleFire.SetActive(false);
+        thrusters.SetActive(false); 
+        animator.SetBool("Destroy", true);
+        
+
+        yield return new WaitForSeconds(2.63f);
+        Destroy(gameObject);
+    }
     //Turns on the Thrusters animation when the moveSpeed gets equals to the newSpeed.
     void TurnOnThrusters()
     {   if(moveSpeed == newSpeed) 

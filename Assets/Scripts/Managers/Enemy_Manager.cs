@@ -14,7 +14,7 @@ public class Enemy_Manager : MonoBehaviour
     public GameObject speedUpPowerUpPrefab;
     public GameObject shieldPowerUpPrefab;
     public GameObject tripleShotPowerUpPrefab;
-    private float dropChance = 1f;
+    private float dropChance = .3f;
     SpawnManager spawnManager;
     PolygonCollider2D polygonCollider2D;
     public float moveSpeed = 2f;
@@ -23,7 +23,8 @@ public class Enemy_Manager : MonoBehaviour
     private Camera mainCamera;
     private bool movingLeft = true;
     private bool isDestroyed = false;
-    
+    private bool canShoot = false;
+
 
 
     // Start is called before the first frame update
@@ -38,19 +39,19 @@ public class Enemy_Manager : MonoBehaviour
     {
         if (!isDestroyed)
         {
-            TopBottomEnemy();
+            EnemyBehaviour();
             EnemyFireProjectile();
+            
         }
         else if (isDestroyed) 
         {
             gameObject.transform.Translate(Vector3.down * moveSpeed * Time.deltaTime/1.5f);
-
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Boundry" )
+        if (collision.gameObject.tag == "Boundry" || collision.gameObject.tag == "Shield")
         {
             StartCoroutine(DestroyEnemy());
         }
@@ -70,7 +71,7 @@ public class Enemy_Manager : MonoBehaviour
             Destroy(collision.gameObject);//Destroys the laser that hit the enemy
             StartCoroutine(DestroyEnemy());
         }
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Shield")
+        if (collision.gameObject.tag == "Player"  )
         
         {
 
@@ -78,6 +79,7 @@ public class Enemy_Manager : MonoBehaviour
         }
         
     }
+    
 
     
     public IEnumerator DestroyEnemy()//Coroutine for playing the animation of the destroying the enemy before it gets destroyed.
@@ -108,7 +110,7 @@ public class Enemy_Manager : MonoBehaviour
 
     void EnemyFireProjectile()
     {
-        if (Random.Range(0f,1000)<1f)
+        if (Random.Range(0f,1000)<0.7f )
         {
         enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x, transform.position.y - .2f, 0), enemy.transform.rotation);
         }
@@ -136,7 +138,7 @@ public class Enemy_Manager : MonoBehaviour
 
         }
     }
-    void TopBottomEnemy()
+    void EnemyBehaviour()
     {
         Vector2 position = transform.position;
         Vector2 viewportPosition = mainCamera.WorldToViewportPoint(position);
@@ -145,9 +147,14 @@ public class Enemy_Manager : MonoBehaviour
         {
             gameObject.transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
         }
-       else if(gameObject.tag == "LefttoRight")
+         else if(gameObject.tag == "LefttoRight")
+         {
+            gameObject.transform.Translate(new Vector3(1*Time.deltaTime,0,0));
+            TeleportEnemy();
+         }
+        else if(gameObject.tag == "NewLefttoRight")
         {
-            gameObject.transform.Translate(new Vector3(1*Time.deltaTime,-1*Time.deltaTime,0));
+            gameObject.transform.Translate(new Vector3(1 * Time.deltaTime, -1 * Time.deltaTime, 0));
         }
         else if (gameObject.tag == "RighttoLeft")
         {
@@ -178,6 +185,30 @@ public class Enemy_Manager : MonoBehaviour
             transform.Translate(Vector3.down * (moveSpeed / 2) * Time.deltaTime);
 
         }
+    }
+
+    public void StartShooting()
+    {
+        canShoot = true;
+        polygonCollider2D.isTrigger = false;
+
+    }
+    private void TeleportEnemy()
+    {
+        Vector2 position = transform.position;
+        // world is (-infinity , -infinity) to (+infinity, +infinity)
+        //viewport is the area covered by the camera. (0,0) for bottom left and (1,1) for top right corner
+        Vector2 viewportPosition = mainCamera.WorldToViewportPoint(position);
+        if (viewportPosition.x > 1.08f)
+        {
+            position.x = mainCamera.ViewportToWorldPoint(new Vector2(0, viewportPosition.y)).x;
+        }
+        else if (viewportPosition.x < -0.08f)
+        {
+            position.x = mainCamera.ViewportToWorldPoint(new Vector2(1, viewportPosition.y)).x;
+
+        }
+        transform.position = position;
     }
 
 }

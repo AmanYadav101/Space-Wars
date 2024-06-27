@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 4252222809064929106}
   - component: {fileID: -5045514093101914001}
   m_Layer: 0
-  m_Name: Enemy
-  m_TagString: LefttoRightLoop
+  m_Name: RighttoLeft Enenmy
+  m_TagString: RighttoLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
