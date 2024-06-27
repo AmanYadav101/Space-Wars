@@ -65,6 +65,8 @@ polygonCollider2D= gameObject.GetComponent<PolygonCollider2D>();
 
     void Movement()
     {
+        Vector3 position = transform.position;
+        Vector2 viewportPosition = mainCamera.WorldToViewportPoint(position);
         //checks if the ship is moving or not. Used for playing different animations from the animator
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -88,6 +90,22 @@ polygonCollider2D= gameObject.GetComponent<PolygonCollider2D>();
             isMoving = true;
             isMoveingLeft = false;
             isMoveingRight = true;
+        }
+        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            if (viewportPosition.y < 0.3f) // Only allow movement if within lower 40% of the viewport
+            {
+                Vector3 move = new Vector3(0, +moveSpeed * Time.deltaTime, 0);
+                transform.Translate(move);
+            }
+        }
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        {
+            if (viewportPosition.y > 0.1f) // Only allow movement if within the viewport
+            {
+                Vector3 move = new Vector3(0, -moveSpeed * Time.deltaTime, 0);
+                transform.Translate(move);
+            }
         }
         else {
             isMoving = false;
@@ -160,7 +178,11 @@ polygonCollider2D= gameObject.GetComponent<PolygonCollider2D>();
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("LefttoRight") || collision.gameObject.CompareTag("RighttoLeft") || collision.gameObject.CompareTag("LefttoRightLoop") || collision.gameObject.CompareTag("ToptoBottom"))
+        if (collision.gameObject.CompareTag("Enemy") || 
+            collision.gameObject.CompareTag("LefttoRight") || 
+            collision.gameObject.CompareTag("RighttoLeft") || 
+            collision.gameObject.CompareTag("LefttoRightLoop") || 
+            collision.gameObject.CompareTag("ToptoBottom"))
         {
             Debug.Log("Health:-" + currentHealth);
             if (currentHealth > 0)
@@ -238,18 +260,14 @@ polygonCollider2D= gameObject.GetComponent<PolygonCollider2D>();
 
     //Turns on the Shields if the isInvincible bool is true.
     void TurnOnShield()
-    {
-        Debug.Log("Health:- " + currentHealth);
-        
+    {        
         if (currentHealth > 0 && isInvincible)
         {
-            Debug.Log("if shield");
 
             shield.SetActive(true);
         }
         else
         {
-            Debug.Log("else shield");
 
             shield.SetActive(false);
         }

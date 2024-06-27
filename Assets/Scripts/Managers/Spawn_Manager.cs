@@ -19,7 +19,7 @@ public class SpawnManager : MonoBehaviour
     private GameObject enemyClone;
     public Camera mainCamera;
     public int max_Count = 10;
-    float spawnTime = 60f;
+    float spawnTime = 20f;
 
 
     public GameObject ToptoBottomPrefab;
