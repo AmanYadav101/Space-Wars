@@ -282,4 +282,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea6f5e9d407944e40b1f8eb2cb584622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrusters: {fileID: 8966014470728458563, guid: 742b28c2d3d24354988a1cee7c3ea427, type: 3}
+  player_manager: {fileID: 3868101149475518442, guid: 04862e7313bd34c4ea6352e281035497, type: 3}

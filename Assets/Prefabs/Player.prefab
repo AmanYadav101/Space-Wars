@@ -186,8 +186,7 @@ MonoBehaviour:
   thrusters: {fileID: 9118507889788877700}
   currentHealth: 0
   healthBar: {fileID: 2081924667153714541}
-  shield_PowerUp: {fileID: 5244780147072485393, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
-  shield: {fileID: 3840375367526261943}
+  shield: {fileID: 1378745777340688092, guid: 7bf590b63a69e2b41adc4b133da340ec, type: 3}
 --- !u!60 &-835566436680224597
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1145,11 +1144,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bf590b63a69e2b41adc4b133da340ec, type: 3}
---- !u!1 &3840375367526261943 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1378745777340688092, guid: 7bf590b63a69e2b41adc4b133da340ec, type: 3}
-  m_PrefabInstance: {fileID: 2767894038092055147}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3899937802342992629 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1186368866538981534, guid: 7bf590b63a69e2b41adc4b133da340ec, type: 3}

@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class Shield_PowerUp : MonoBehaviour
 {
-    Player_Manager player_manager;
+     Player_Manager player_manager;
     // Start is called before the first frame update
     void Start()
     {
-        player_manager.SetIsInvincible(false);
+        player_manager = GameObject.FindObjectOfType<Player_Manager>();
+
+        /*        player_manager.SetIsInvincible(false);
+        */
+        
     }
 
     private void Awake()
     {
-        player_manager = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Manager>();
     }
 
 

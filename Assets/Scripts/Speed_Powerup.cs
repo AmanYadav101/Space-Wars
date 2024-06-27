@@ -8,10 +8,13 @@ public class Speed_Powerup : MonoBehaviour
    
     private void Awake()
     {
-        player_manager = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Manager>();
+        player_manager = GameObject.FindObjectOfType<Player_Manager>();
+
+        /*        player_manager = GameObject.FindAnyObjectByType<Player_Manager>().GetComponent<Player_Manager>();
+        */
     }
 
-   
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Boundry"))

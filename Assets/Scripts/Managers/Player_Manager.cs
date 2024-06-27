@@ -24,7 +24,12 @@ public class Player_Manager : MonoBehaviour
     public Health_Bar healthBar;
     //Shield
     public GameObject shield;
-    private bool isInvincible;
+    private bool isInvincible=false;
+
+    bool isMoving = false;
+
+    bool isMoveingLeft = false;
+    bool isMoveingRight = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +43,7 @@ public class Player_Manager : MonoBehaviour
         middleFire.SetActive(false);
         thrusters.SetActive(false);
         shield.SetActive(false);
-
+        Debug.Log("Start Health:- " + currentHealth);
     }
 
     private void Awake()
@@ -61,8 +66,6 @@ public class Player_Manager : MonoBehaviour
     void Movement()
     {
         //checks if the ship is moving or not. Used for playing different animations from the animator
-        bool isMoving = false;
-
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
@@ -71,23 +74,39 @@ public class Player_Manager : MonoBehaviour
 
 
             //for Rotating our ship to the left
-            animator.SetInteger("Turn",-1);
             isMoving = true;
+            isMoveingLeft = true;
+            isMoveingRight = false;
         }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             Vector3 move = new Vector3(moveSpeed * Time.deltaTime, 0, 0);
             transform.Translate(move);
 
 
             //for Rotating our ship to the right
-            animator.SetInteger("Turn", 1);
             isMoving = true;
+            isMoveingLeft = false;
+            isMoveingRight = true;
+        }
+        else {
+            isMoving = false;
         }
         if (!isMoving)// making the Turn parameter from the animator to 0 so that ideal animation can be played if no movement is happening.
         {
             //for making the ship back to the ideal position
             animator.SetInteger("Turn", 0);
+        }
+        else
+        {
+            if (isMoveingLeft)
+            {
+                animator.SetInteger("Turn", -1);
+            }
+            else if (isMoveingRight)
+            {
+                animator.SetInteger("Turn", +1);
+            }
         }
 
     }
@@ -110,9 +129,11 @@ public class Player_Manager : MonoBehaviour
         transform.position = position;
     }
 
-
+    //+++++++++++++++++++Health Logic+++++++++++++++++++++
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
+
         if (collision.gameObject.CompareTag("Enemy Laser"))
         {
             Destroy(collision.gameObject);
@@ -136,7 +157,30 @@ public class Player_Manager : MonoBehaviour
             }
         }
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("LefttoRight") || collision.gameObject.CompareTag("RighttoLeft") || collision.gameObject.CompareTag("LefttoRightLoop") || collision.gameObject.CompareTag("ToptoBottom"))
+        {
+            Debug.Log("Health:-" + currentHealth);
+            if (currentHealth > 0)
+            {
+                Debug.Log("Health greater than zero:-" + currentHealth);
+
+                currentHealth -= 40;
+                healthBar.SetHealth(currentHealth);
+                if (currentHealth <= 0)
+                {
+                    Destroy(gameObject);
+                }
+            }
+            else if (currentHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
     //Turns on the Thrusters animation when the moveSpeed gets equals to the newSpeed.
     void TurnOnThrusters()
     {   if(moveSpeed == newSpeed) 
@@ -182,12 +226,18 @@ public class Player_Manager : MonoBehaviour
     //Turns on the Shields if the isInvincible bool is true.
     void TurnOnShield()
     {
+        Debug.Log("Health:- " + currentHealth);
+        
         if (currentHealth > 0 && isInvincible)
         {
+            Debug.Log("if shield");
+
             shield.SetActive(true);
         }
         else
         {
+            Debug.Log("else shield");
+
             shield.SetActive(false);
         }
 

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TripleShot_PowerUp : MonoBehaviour
-{
+{   
+    Player_Manager player_manager;
+    SpawnManager spawn_manager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player_manager = GameObject.FindObjectOfType<Player_Manager>();
+
     }
 
     // Update is called once per frame
@@ -15,11 +18,9 @@ public class TripleShot_PowerUp : MonoBehaviour
     {
         
     }
-    Player_Manager player_manager;
-    SpawnManager spawn_manager;
+
     private void Awake()
     {
-        player_manager = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Manager>();
         spawn_manager = GameObject.FindFirstObjectByType<SpawnManager>().GetComponent<SpawnManager>();
     }
 

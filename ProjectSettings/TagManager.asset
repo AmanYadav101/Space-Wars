@@ -9,6 +9,11 @@ TagManager:
   - Laser
   - Enemy Laser
   - Shield
+  - Shield_PowerUp
+  - ToptoBottom
+  - LefttoRight
+  - LefttoRightLoop
+  - RighttoLeft
   layers:
   - Default
   - TransparentFX
