@@ -36,6 +36,8 @@ public class SpawnManager : MonoBehaviour
     PolygonCollider2D polygonCollider2D;
     private List<GameObject> enemies = new List<GameObject>();
     private Vector3 centerPosition;
+
+
     
     private void Start()
     {
@@ -53,7 +55,6 @@ public class SpawnManager : MonoBehaviour
         //StartCoroutine(SpawnAndAnimateEnemies());
         //StartCoroutine(SpawnEnemies());
         StartCoroutine(SpawnSequence());
-
     }
 
 

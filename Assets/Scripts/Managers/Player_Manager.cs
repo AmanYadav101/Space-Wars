@@ -27,6 +27,7 @@ public class Player_Manager : MonoBehaviour
     private bool isInvincible=false;
     PolygonCollider2D polygonCollider2D;
     bool isMoving = false;
+    private bool isDestroyed = false;
 
     bool isMoveingLeft = false;
     bool isMoveingRight = false;
@@ -43,8 +44,8 @@ public class Player_Manager : MonoBehaviour
         middleFire.SetActive(false);
         thrusters.SetActive(false);
         shield.SetActive(false);
-polygonCollider2D= gameObject.GetComponent<PolygonCollider2D>();
-            }
+        polygonCollider2D= gameObject.GetComponent<PolygonCollider2D>();
+    }
 
     private void Awake()
     {
@@ -55,11 +56,14 @@ polygonCollider2D= gameObject.GetComponent<PolygonCollider2D>();
     // Update is called once per frame
     void Update()
     {
+        if (!isDestroyed) 
+        { 
         Movement();
-        TeleportPlayer();
+        TeleportPlayer(); 
         TurnOnFire();
         TurnOnThrusters();
         TurnOnShield();//Turns on the shield when the IsInvincible boolean gets to true in the Shield_Powerup Script
+        }
     }
 
 
@@ -205,11 +209,11 @@ polygonCollider2D= gameObject.GetComponent<PolygonCollider2D>();
 
     IEnumerator DestroyPlayer()
     {
+        isDestroyed = true;
         polygonCollider2D.isTrigger = true;
         leftWingFire.SetActive(false);
         rightWingFire.SetActive(false);
         middleFire.SetActive(false);
-        thrusters.SetActive(false); 
         animator.SetBool("Destroy", true);
         
 
@@ -312,6 +316,14 @@ polygonCollider2D= gameObject.GetComponent<PolygonCollider2D>();
     }
     public bool GetIsInvincible() { 
         return isInvincible;
+    }
+    public void SetIsDestroyed(bool destroyed) 
+    { 
+        isDestroyed = destroyed;
+    }
+    public bool GetIsDestroyed()
+    {
+        return isDestroyed;
     }
 }
 
