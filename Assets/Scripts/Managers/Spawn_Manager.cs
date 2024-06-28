@@ -5,6 +5,8 @@ using System.Diagnostics;
 using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEngine;
+using DG.Tweening;
+
 
 public class SpawnManager : MonoBehaviour
 {
@@ -19,13 +21,15 @@ public class SpawnManager : MonoBehaviour
     private GameObject enemyClone;
     public Camera mainCamera;
     public int max_Count = 10;
-    float spawnTime = 20f;
+    float spawnTime = 5f;
 
 
     public GameObject ToptoBottomPrefab;
     public GameObject RighttoLeftPrefab;
     public GameObject L2RLoopPrefab;
     public GameObject NewLefttoRight;
+    public GameObject boss1Prefab;
+    public GameObject boss2Prefab;
     float randomFloatTime;
 
     //Enemy Cluster
@@ -36,6 +40,7 @@ public class SpawnManager : MonoBehaviour
     PolygonCollider2D polygonCollider2D;
     private List<GameObject> enemies = new List<GameObject>();
     private Vector3 centerPosition;
+    private Vector3 centerToCenterPostion;
 
 
     
@@ -52,6 +57,7 @@ public class SpawnManager : MonoBehaviour
             polygonCollider2D.isTrigger = true;
         }
         centerPosition = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.nearClipPlane));
+        centerToCenterPostion = Camera.main.ViewportToWorldPoint(new Vector3(0.5f,.7f,Camera.main.nearClipPlane));
         //StartCoroutine(SpawnAndAnimateEnemies());
         //StartCoroutine(SpawnEnemies());
         StartCoroutine(SpawnSequence());
@@ -107,49 +113,39 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator SpawnSequence()
     {
-        // Run EnemySpawner for a certain duration
-        yield return StartCoroutine(EnemySpawner(spawnTime)); 
-        //Wait for 5 secs for all the enemy to be cleared
-        yield return new WaitForSeconds(5f);
-        // After EnemySpawner completes, switch to SpawnAndAnimateEnemies
-        yield return StartCoroutine(SpawnAndAnimateEnemies());
+        yield return StartCoroutine(EnemySpawner(spawnTime));
+
+        yield return new WaitForSeconds(3f);
+
+        SpawnBoss(boss1Prefab);
+
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRight").Length == 0);
+
+        yield return new WaitForSeconds(3f);
+
+        yield return StartCoroutine(EnemySpawner(spawnTime));
+
+        yield return new WaitForSeconds(3f);
+
+        SpawnBoss(boss2Prefab);
     }
-    IEnumerator SpawnAndAnimateEnemies()
+    void SpawnBoss(GameObject bossPrefab)
     {
-        // Spawn enemies at the top of the viewport
-        for (int i = 0; i < enemyCount; i++)
-        {
-            Vector3 spawnPosition = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 1.1f, Camera.main.nearClipPlane));
-            GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-            enemies.Add(enemy);
-        }
+        Vector3 spawnPosition = centerToCenterPostion; // Start from above the screen
+        GameObject boss = Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
 
-        // Move all enemies to the center
-        foreach (GameObject enemy in enemies)
-        {
-            enemy.transform.DOMove(centerPosition, moveDuration);
-        }
+        /*// Create a sequence for the animations
+        DG.Tweening.Sequence bossSequence = DOTween.Sequence();
 
-        yield return new WaitForSeconds(moveDuration);
+        // Add scale animation
+        boss.transform.localScale = Vector3.zero;
+        bossSequence.Append(boss.transform.DOScale(Vector3.one, 1f));
 
-        // Form a circular shape
-        for (int i = 0; i < enemies.Count; i++)
-        {
-            float angle = i * Mathf.PI * 2 / enemies.Count;
-            Vector3 targetPosition = centerPosition + new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * radius;
-            enemies[i].transform.DOMove(targetPosition, formationDuration);
-
-        }
-
-        yield return new WaitForSeconds(formationDuration);
-        // Start shooting after formation is complete
-        foreach (GameObject enemy in enemies)
-        {
-
-            enemy.GetComponent<Enemy_Manager>().StartShooting();
-        }
-
+        // Add movement animation
+        bossSequence.Append(boss.transform.DOMove(centerPosition, 1f));*/
     }
+
+
 
     void SpawnRandomEnemy()
     {
@@ -183,6 +179,7 @@ public class SpawnManager : MonoBehaviour
             randomFloatTime = Random.Range(2f,3f);
             yield return new WaitForSeconds(randomFloatTime);
             SpawnRandomEnemy();
+            
         }
     }
     Vector3 GetRandomTopPosition()

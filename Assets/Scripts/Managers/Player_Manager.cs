@@ -97,7 +97,7 @@ public class Player_Manager : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            if (viewportPosition.y < 0.3f) // Only allow movement if within lower 40% of the viewport
+            if (viewportPosition.y < 0.2f) // Only allow movement if within lower 40% of the viewport
             {
                 Vector3 move = new Vector3(0, +moveSpeed * Time.deltaTime, 0);
                 transform.Translate(move);
@@ -186,7 +186,8 @@ public class Player_Manager : MonoBehaviour
             collision.gameObject.CompareTag("LefttoRight") || 
             collision.gameObject.CompareTag("RighttoLeft") || 
             collision.gameObject.CompareTag("LefttoRightLoop") || 
-            collision.gameObject.CompareTag("ToptoBottom"))
+            collision.gameObject.CompareTag("ToptoBottom")||
+            collision.gameObject.CompareTag("LRBoss"))
         {
             Debug.Log("Health:-" + currentHealth);
             if (currentHealth > 0)

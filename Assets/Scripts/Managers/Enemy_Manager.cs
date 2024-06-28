@@ -55,6 +55,17 @@ public class Enemy_Manager : MonoBehaviour
         {
             StartCoroutine(DestroyEnemy());
         }
+        if (collision.gameObject.tag == "Laser")
+        {
+            Destroy(collision.gameObject);//Destroys the laser that hit the enemy
+            StartCoroutine(DestroyEnemy());
+        }
+        if (collision.gameObject.tag == "Player")
+
+        {
+            StartCoroutine(DestroyEnemy());
+        }
+
     }
     private void Awake()
     {        
@@ -149,9 +160,37 @@ public class Enemy_Manager : MonoBehaviour
         }
          else if(gameObject.tag == "LefttoRight")
          {
-            gameObject.transform.Translate(new Vector3(1*Time.deltaTime,0,0));
+/*            gameObject.transform.Translate(new Vector3(1*Time.deltaTime,0,0));
+*/            // Check if the enemy has reached the edges of the viewport
+            if (viewportPosition.x > 0.9f)
+            {
+                movingLeft = true;// Move left if the enemy reaches the right edge
+
+            }
+            else if ((viewportPosition.x < 0.1f))
+            {
+                movingLeft = false;// Move right if the enemy reaches the left edge
+            }
+            //Move enemy based on the direction
+            if (movingLeft)
+            {
+                transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+            }
+            else
+            {
+                transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+            }
+            transform.Translate(Vector3.down * (moveSpeed / 2) * Time.deltaTime);
+            TeleportEnemyUpDown();
+
+            
+        }
+        else if(gameObject.tag == "LRBoss")
+        {
+            gameObject.transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));
             TeleportEnemy();
-         }
+
+        }
         else if(gameObject.tag == "NewLefttoRight")
         {
             gameObject.transform.Translate(new Vector3(1 * Time.deltaTime, -1 * Time.deltaTime, 0));
@@ -206,6 +245,24 @@ public class Enemy_Manager : MonoBehaviour
         else if (viewportPosition.x < -0.08f)
         {
             position.x = mainCamera.ViewportToWorldPoint(new Vector2(1, viewportPosition.y)).x;
+
+        }
+        transform.position = position;
+    }
+    private void TeleportEnemyUpDown()
+    {
+        Vector2 position = transform.position;
+        Vector2 viewportPosition = mainCamera.WorldToViewportPoint(position);
+
+        /*        if (viewportPosition.y > 0.9f)
+                {
+                    position.y = mainCamera.ViewportToWorldPoint(new Vector2(viewportPosition.x, 0.89f)).y;
+
+                }
+                else*/
+        if (viewportPosition.y < 0.3f)
+        {
+            position.y = mainCamera.ViewportToWorldPoint(new Vector2(viewportPosition.x, 0.99f)).y;
 
         }
         transform.position = position;
