@@ -16,6 +16,7 @@ TagManager:
   - RighttoLeft
   - NewLefttoRight
   - LRBoss
+  - BossLeftToRight
   layers:
   - Default
   - TransparentFX

@@ -25,7 +25,7 @@ public class Player_Manager : MonoBehaviour
     //Shield
     public GameObject shield;
     private bool isInvincible=false;
-    PolygonCollider2D polygonCollider2D;
+     PolygonCollider2D polygonCollider2D;
     bool isMoving = false;
     private bool isDestroyed = false;
 
@@ -44,13 +44,13 @@ public class Player_Manager : MonoBehaviour
         middleFire.SetActive(false);
         thrusters.SetActive(false);
         shield.SetActive(false);
-        polygonCollider2D= gameObject.GetComponent<PolygonCollider2D>();
     }
 
     private void Awake()
     {
- 
-  
+
+        polygonCollider2D = gameObject.GetComponent<PolygonCollider2D>();
+
     }
 
     // Update is called once per frame
@@ -64,6 +64,11 @@ public class Player_Manager : MonoBehaviour
         TurnOnThrusters();
         TurnOnShield();//Turns on the shield when the IsInvincible boolean gets to true in the Shield_Powerup Script
         }
+        if(currentHealth == 0) 
+        { 
+        StartCoroutine(DestroyPlayer());
+        }
+
     }
 
 
@@ -159,8 +164,9 @@ public class Player_Manager : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy Laser"))
         {
             Destroy(collision.gameObject);
+            if (isInvincible) { }
 
-             if (currentHealth > 0)//Takes Damage if health is greater than 0 and updates
+            else if (currentHealth > 0)//Takes Damage if health is greater than 0 and updates
                                        //the health bar based on the health.
              {   
                 currentHealth -= 20;
@@ -182,7 +188,17 @@ public class Player_Manager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") || 
+        Debug.Log("Collision Entered");
+
+        if (collision.gameObject.tag == "BossLeftToRight")
+        {
+            
+            Debug.Log("Collided with BossLeftToRight");
+            currentHealth = 0;
+            StartCoroutine(DestroyPlayer());
+            
+        }
+        else if (collision.gameObject.CompareTag("Enemy") || 
             collision.gameObject.CompareTag("LefttoRight") || 
             collision.gameObject.CompareTag("RighttoLeft") || 
             collision.gameObject.CompareTag("LefttoRightLoop") || 
@@ -206,17 +222,18 @@ public class Player_Manager : MonoBehaviour
                 StartCoroutine(DestroyPlayer());
             }
         }
+        
     }
 
-    IEnumerator DestroyPlayer()
+    public IEnumerator DestroyPlayer()
     {
         isDestroyed = true;
-        polygonCollider2D.isTrigger = true;
         leftWingFire.SetActive(false);
         rightWingFire.SetActive(false);
         middleFire.SetActive(false);
         animator.SetBool("Destroy", true);
-        
+        polygonCollider2D.isTrigger = true;
+
 
         yield return new WaitForSeconds(2.63f);
         Destroy(gameObject);

@@ -21,7 +21,7 @@ public class SpawnManager : MonoBehaviour
     private GameObject enemyClone;
     public Camera mainCamera;
     public int max_Count = 10;
-    float spawnTime = 5f;
+    float spawnTime = 2f;
 
 
     public GameObject ToptoBottomPrefab;
@@ -30,6 +30,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject NewLefttoRight;
     public GameObject boss1Prefab;
     public GameObject boss2Prefab;
+
     float randomFloatTime;
 
     //Enemy Cluster
@@ -42,8 +43,6 @@ public class SpawnManager : MonoBehaviour
     private Vector3 centerPosition;
     private Vector3 centerToCenterPostion;
 
-
-    
     private void Start()
     {
         lastShotTime = -shootCooldown; //lastShotTime = -shootCooldown so that the player is able to shoot the projectile at 0 secs.
@@ -115,19 +114,25 @@ public class SpawnManager : MonoBehaviour
     {
         yield return StartCoroutine(EnemySpawner(spawnTime));
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRight").Length == 0);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("RighttoLeft").Length == 0);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("ToptoBottom").Length == 0);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRightLoop").Length == 0);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("NewLefttoRight").Length == 0);
+
 
         SpawnBoss(boss1Prefab);
 
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRight").Length == 0);
+       
 
-        yield return new WaitForSeconds(3f);
+
+        /*yield return new WaitForSeconds(3f);
 
         yield return StartCoroutine(EnemySpawner(spawnTime));
 
         yield return new WaitForSeconds(3f);
 
-        SpawnBoss(boss2Prefab);
+        SpawnBoss(boss2Prefab);*/
     }
     void SpawnBoss(GameObject bossPrefab)
     {
@@ -144,6 +149,8 @@ public class SpawnManager : MonoBehaviour
         // Add movement animation
         bossSequence.Append(boss.transform.DOMove(centerPosition, 1f));*/
     }
+
+   
 
 
 

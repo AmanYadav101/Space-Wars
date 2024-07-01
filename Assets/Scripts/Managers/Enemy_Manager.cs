@@ -10,6 +10,10 @@ public class Enemy_Manager : MonoBehaviour
     private float destroyTime;//Length of the "Enemy_Destroyed" clip.
     public GameObject enemy;
     public GameObject enemyProjectile;
+    public GameObject bossProjectile1;
+    public GameObject bossProjectile2;
+
+
     public GameObject enemyProjectileClone;
     public GameObject speedUpPowerUpPrefab;
     public GameObject shieldPowerUpPrefab;
@@ -24,12 +28,16 @@ public class Enemy_Manager : MonoBehaviour
     private bool movingLeft = true;
     private bool isDestroyed = false;
     private bool canShoot = false;
+    private int bossMaxHealth = 1000;
+    private int bossCurrentHealth;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        bossCurrentHealth = bossMaxHealth;
+
         mainCamera = Camera.main;
         UpdateAnimClipTimes(); //Gets the length of all the animations in the animator attached to the game object at the start of the game.
     }
@@ -51,20 +59,38 @@ public class Enemy_Manager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Boundry" || collision.gameObject.tag == "Shield")
-        {
-            StartCoroutine(DestroyEnemy());
-        }
-        if (collision.gameObject.tag == "Laser")
+        
+         if (collision.gameObject.tag == "Laser")
         {
             Destroy(collision.gameObject);//Destroys the laser that hit the enemy
             StartCoroutine(DestroyEnemy());
         }
-        if (collision.gameObject.tag == "Player")
-
+        if (collision.gameObject.tag == "Boundry")
         {
             StartCoroutine(DestroyEnemy());
         }
+        if ((gameObject.tag == "ToptoBottom" ||
+                gameObject.tag == "LefttoRight" ||
+                gameObject.tag == "LRBoss" ||
+                gameObject.tag == "NewLefttoRight" ||
+                gameObject.tag == "RighttoLeft" ||
+                gameObject.tag == "LefttoRightLoop") && collision.gameObject.tag == "Shield") 
+        {
+            StartCoroutine(DestroyEnemy());
+
+        }
+
+        /*if ((gameObject.tag == "ToptoBottom" ||
+                gameObject.tag == "LefttoRight" ||
+                gameObject.tag == "LRBoss" ||
+                gameObject.tag == "NewLefttoRight" ||
+                gameObject.tag == "RighttoLeft" ||
+                gameObject.tag == "LefttoRightLoop") && 
+                collision.gameObject.tag == "Player")
+
+        {
+            StartCoroutine(DestroyEnemy());
+        }*/
 
     }
     private void Awake()
@@ -74,19 +100,72 @@ public class Enemy_Manager : MonoBehaviour
 */        /*        player_manager = GameObject.FindObjectOfType<Player_Manager>().GetComponent<Player_Manager>();
         */
         spawnManager = GameObject.FindFirstObjectByType<SpawnManager>().GetComponent<SpawnManager>();
-    }
+    }      
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Laser")
+        /*        if (gameObject.tag == "BossLeftToRight" && collision.gameObject.tag == "Laser")
+                {
+
+                    Destroy(collision.gameObject);
+                     if (bossCurrentHealth > 0)
+                     {
+                     bossCurrentHealth -= 50;
+                         if (bossCurrentHealth <= 0)
+                         {
+                             StartCoroutine(DestroyEnemy());
+                         }
+                     }
+                     else if (bossCurrentHealth <= 0)
+                     {
+                         StartCoroutine(DestroyEnemy());
+                     }
+
+
+                }*/
+
+        if (gameObject.tag == "BossLeftToRight")
+        {
+            if(collision.gameObject.tag == "Laser") 
+            { 
+                Destroy(collision.gameObject);
+                if (bossCurrentHealth > 0)
+                {
+                    bossCurrentHealth -= 50;
+                    if (bossCurrentHealth <= 0)
+                    {
+                        StartCoroutine(DestroyEnemy());
+                    }
+                }
+                else if (bossCurrentHealth <= 0)
+                {
+                    StartCoroutine(DestroyEnemy());
+                }
+            }
+
+            if(collision.gameObject.tag == "Player")
+            {
+                StartCoroutine(player_manager.DestroyPlayer());            }
+        }
+        else if ((gameObject.tag == "ToptoBottom" ||
+                gameObject.tag == "LefttoRight" ||
+                gameObject.tag == "LRBoss" ||
+                gameObject.tag == "NewLefttoRight" ||
+                gameObject.tag == "RighttoLeft" ||
+                gameObject.tag == "LefttoRightLoop" )&&
+                collision.gameObject.tag == "Laser")
         {
             Destroy(collision.gameObject);//Destroys the laser that hit the enemy
             StartCoroutine(DestroyEnemy());
         }
-        if (collision.gameObject.tag == "Player"  )
-        
+        if ((gameObject.tag == "ToptoBottom" ||
+                gameObject.tag == "LefttoRight" ||
+                gameObject.tag == "LRBoss" ||
+                gameObject.tag == "NewLefttoRight" ||
+                gameObject.tag == "RighttoLeft" ||
+                gameObject.tag == "LefttoRightLoop") && 
+                collision.gameObject.tag == "Player"  )
         {
-
-            StartCoroutine (DestroyEnemy());
+                StartCoroutine(DestroyEnemy());
         }
         
     }
@@ -115,15 +194,31 @@ public class Enemy_Manager : MonoBehaviour
                 case "Enemy_Destroyed":
                     destroyTime = clip.length;//sets the variable to the length of the clip 
                     break;
+                case "Boss Destroyed":
+                    destroyTime = clip.length;
+                    break;
             }
         }
     }
 
     void EnemyFireProjectile()
     {
-        if (Random.Range(0f,1000)<0.7f )
+        if (Random.Range(0f,1000)<100f )
         {
-        enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x, transform.position.y - .2f, 0), enemy.transform.rotation);
+            if(gameObject.tag == "BossLeftToRight")
+            {
+                enemyProjectileClone = Instantiate(bossProjectile1, new Vector3(transform.position.x + .35f, transform.position.y -.8f , 0), Quaternion.identity);
+                enemyProjectileClone = Instantiate(bossProjectile1, new Vector3(transform.position.x + .6f, transform.position.y -.65f , 0), Quaternion.identity);
+                enemyProjectileClone = Instantiate(bossProjectile1, new Vector3(transform.position.x - .35f, transform.position.y -.8f , 0), Quaternion.identity);
+                enemyProjectileClone = Instantiate(bossProjectile1, new Vector3(transform.position.x - .6f, transform.position.y -.65f , 0), Quaternion.identity);
+                enemyProjectileClone = Instantiate(bossProjectile2, new Vector3(transform.position.x, transform.position.y - 2.2f, 0), Quaternion.identity);
+                enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x-.6f, transform.position.y - 2.2f, 0), Quaternion.identity);
+                enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x+.6f, transform.position.y - 2.2f, 0), Quaternion.identity);
+
+            }
+            else { 
+            enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x, transform.position.y - .2f, 0), enemy.transform.rotation);
+            }
         }
     }
 
@@ -184,6 +279,34 @@ public class Enemy_Manager : MonoBehaviour
             TeleportEnemyUpDown();
 
             
+        }
+        else if (gameObject.tag == "BossLeftToRight")
+        {
+            /*            gameObject.transform.Translate(new Vector3(1*Time.deltaTime,0,0));
+            */            // Check if the enemy has reached the edges of the viewport
+            if (viewportPosition.x > .8f)
+            {
+                movingLeft = true;// Move left if the enemy reaches the right edge
+
+            }
+            else if ((viewportPosition.x < 0.2f))
+            {
+                movingLeft = false;// Move right if the enemy reaches the left edge
+            }
+            //Move enemy based on the direction
+            if (movingLeft)
+            {
+                transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+            }
+            else
+            {
+                
+                transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+            }
+           /* transform.Translate(Vector3.down * (moveSpeed / 2) * Time.deltaTime);
+            TeleportEnemyUpDown();
+*/
+
         }
         else if(gameObject.tag == "LRBoss")
         {

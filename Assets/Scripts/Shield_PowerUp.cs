@@ -36,7 +36,7 @@ public class Shield_PowerUp : MonoBehaviour
 
         player_manager.SetIsInvincible(true);
         GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<PolygonCollider2D>().enabled = false;
+        GetComponent<PolygonCollider2D>().enabled = false;//these are for turning off the sprites of the powerup Icons.
         yield return new WaitForSeconds(4f);
         player_manager.SetIsInvincible(false);
      
