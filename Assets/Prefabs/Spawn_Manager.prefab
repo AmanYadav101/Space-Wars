@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3256079683847354740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8373291430460245307}
+  - component: {fileID: 1424140257057146577}
+  m_Layer: 0
+  m_Name: Spawn_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &8373291430460245307
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3256079683847354740}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.7673063, y: -6.6665998, z: -0.13718154}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1424140257057146577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3256079683847354740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637ec4c5c2cd1e04cad33e83eae96e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2974788075401291419, guid: 04862e7313bd34c4ea6352e281035497, type: 3}
+  projectile: {fileID: 5555599234428668953, guid: 436c83989a236864e8dc87e776f82732, type: 3}
+  shootCooldown: 0.5
+  enemyPrefab: {fileID: 8313321182695970449, guid: d3ceab726c0c2ad48bb39cf22d952704, type: 3}
+  mainCamera: {fileID: 0}
+  max_Count: 10
+  ToptoBottomPrefab: {fileID: 8313321182695970449, guid: 33e136c1228c46f4e80d69f9f764868c, type: 3}
+  RighttoLeftPrefab: {fileID: 8313321182695970449, guid: 82eec12be30a8454e80ef28cfdf5c310, type: 3}
+  L2RLoopPrefab: {fileID: 8313321182695970449, guid: 2bc2d360ca5d18345a7ad091515f3269, type: 3}
+  NewLefttoRight: {fileID: 8313321182695970449, guid: 2cc3d30389e5b624fb149ed1777f0301, type: 3}
+  boss1Prefab: {fileID: 3215394579708536403, guid: 279ebfff6a0a43b4e86c1ad35ca305a5, type: 3}
+  boss2Prefab: {fileID: 8741175660738162901, guid: 4380db719463df648933fdbef74cbfa1, type: 3}
+  level1BossPrefab: {fileID: 263748607764200667, guid: 9e1246f3f034e7b4abc5cd0d2b717dab, type: 3}
+  enemyCount: 10
+  moveDuration: 2
+  formationDuration: 2
+  radius: 2

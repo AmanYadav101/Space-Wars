@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 
 public class SpawnManager : MonoBehaviour
@@ -21,7 +22,7 @@ public class SpawnManager : MonoBehaviour
     private GameObject enemyClone;
     public Camera mainCamera;
     public int max_Count = 10;
-    float spawnTime = 2f;
+    float spawnTime = 10f;
 
 
     public GameObject ToptoBottomPrefab;
@@ -30,6 +31,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject NewLefttoRight;
     public GameObject boss1Prefab;
     public GameObject boss2Prefab;
+    public GameObject level1BossPrefab;
 
     float randomFloatTime;
 
@@ -59,7 +61,16 @@ public class SpawnManager : MonoBehaviour
         centerToCenterPostion = Camera.main.ViewportToWorldPoint(new Vector3(0.5f,.7f,Camera.main.nearClipPlane));
         //StartCoroutine(SpawnAndAnimateEnemies());
         //StartCoroutine(SpawnEnemies());
-        StartCoroutine(SpawnSequence());
+        
+        switch(SceneManager.GetActiveScene().name)
+            {
+            case("Endless"):
+                StartCoroutine(SpawnSequence());
+                break;
+            case ("Level_1"):
+                StartCoroutine(Level1());
+                break;
+        }
     }
 
 
@@ -111,6 +122,30 @@ public class SpawnManager : MonoBehaviour
        }*/
 
     IEnumerator SpawnSequence()
+    {   while (true)
+        {
+            yield return StartCoroutine(EnemySpawner(spawnTime));
+
+            SpawnBoss(boss1Prefab);
+/*            yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRight").Length == 0);
+*/
+
+
+            yield return new WaitForSeconds(4f);
+
+            yield return StartCoroutine(EnemySpawner(spawnTime));
+
+            yield return new WaitForSeconds(4f);
+
+            SpawnBoss(boss2Prefab);
+
+            yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LRBoss").Length == 0);
+        }
+
+    }
+
+
+    IEnumerator Level1()
     {
         yield return StartCoroutine(EnemySpawner(spawnTime));
 
@@ -121,18 +156,7 @@ public class SpawnManager : MonoBehaviour
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("NewLefttoRight").Length == 0);
 
 
-        SpawnBoss(boss1Prefab);
-
-       
-
-
-        /*yield return new WaitForSeconds(3f);
-
-        yield return StartCoroutine(EnemySpawner(spawnTime));
-
-        yield return new WaitForSeconds(3f);
-
-        SpawnBoss(boss2Prefab);*/
+        SpawnBoss(level1BossPrefab);
     }
     void SpawnBoss(GameObject bossPrefab)
     {

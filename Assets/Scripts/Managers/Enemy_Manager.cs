@@ -59,12 +59,46 @@ public class Enemy_Manager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-         if (collision.gameObject.tag == "Laser")
+        if (gameObject.tag == "BossLeftToRight")
+        {
+            if (collision.gameObject.tag == "Laser")
+            {
+                Destroy(collision.gameObject);
+                if (bossCurrentHealth > 0)
+                {
+                    bossCurrentHealth -= 50;
+                    if (bossCurrentHealth <= 0)
+                    {
+                        StartCoroutine(DestroyEnemy());
+                    }
+                }
+                else if (bossCurrentHealth <= 0)
+                {
+                    StartCoroutine(DestroyEnemy());
+                }
+            }
+
+            if (collision.gameObject.tag == "Player")
+            {
+                StartCoroutine(player_manager.DestroyPlayer());
+            }
+        }
+        else if ((gameObject.tag == "ToptoBottom" ||
+                gameObject.tag == "LefttoRight" ||
+                gameObject.tag == "LRBoss" ||
+                gameObject.tag == "NewLefttoRight" ||
+                gameObject.tag == "RighttoLeft" ||
+                gameObject.tag == "LefttoRightLoop") &&
+                collision.gameObject.tag == "Laser")
         {
             Destroy(collision.gameObject);//Destroys the laser that hit the enemy
             StartCoroutine(DestroyEnemy());
         }
+        /*if (collision.gameObject.tag == "Laser")
+       {
+           Destroy(collision.gameObject);//Destroys the laser that hit the enemy
+           StartCoroutine(DestroyEnemy());
+       }*/
         if (collision.gameObject.tag == "Boundry")
         {
             StartCoroutine(DestroyEnemy());
@@ -203,7 +237,7 @@ public class Enemy_Manager : MonoBehaviour
 
     void EnemyFireProjectile()
     {
-        if (Random.Range(0f,1000)<100f )
+        if (Random.Range(0f,1000)<1f )
         {
             if(gameObject.tag == "BossLeftToRight")
             {
@@ -212,8 +246,10 @@ public class Enemy_Manager : MonoBehaviour
                 enemyProjectileClone = Instantiate(bossProjectile1, new Vector3(transform.position.x - .35f, transform.position.y -.8f , 0), Quaternion.identity);
                 enemyProjectileClone = Instantiate(bossProjectile1, new Vector3(transform.position.x - .6f, transform.position.y -.65f , 0), Quaternion.identity);
                 enemyProjectileClone = Instantiate(bossProjectile2, new Vector3(transform.position.x, transform.position.y - 2.2f, 0), Quaternion.identity);
-                enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x-.6f, transform.position.y - 2.2f, 0), Quaternion.identity);
-                enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x+.6f, transform.position.y - 2.2f, 0), Quaternion.identity);
+                enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x-1.5f, transform.position.y - .8f, 0), Quaternion.identity);
+                enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x+1.4f, transform.position.y - .8f, 0), Quaternion.identity);
+                enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x+1.5f, transform.position.y - .65f, 0), Quaternion.identity);
+                enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x-1.4f, transform.position.y - .65f, 0), Quaternion.identity);
 
             }
             else { 
