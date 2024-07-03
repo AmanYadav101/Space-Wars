@@ -266,7 +266,7 @@ public class Enemy_Manager : MonoBehaviour
 
     void EnemyFireProjectile()
     {
-        if (Random.Range(0f,1000)<2f )
+        if (Random.Range(0f,1000)<200f )
         {
             if(gameObject.tag == "BossLeftToRight")
             {
@@ -301,8 +301,8 @@ public class Enemy_Manager : MonoBehaviour
             {
                 switch(Random.Range(0,2))
                 {
-                    case 0: enemyProjectileClone = Instantiate(level6BossProjectilePrefab_1, new Vector3(transform.position.x - 1.05f, transform.position.y - 4.15f, 0), Quaternion.identity); break;
-                    case 1: enemyProjectileClone = Instantiate(level6BossProjectilePrefab_2, new Vector3(transform.position.x - 1.05f, transform.position.y - 4.15f, 0), Quaternion.identity); break;
+                    case 0: enemyProjectileClone = Instantiate(level6BossProjectilePrefab_1, new Vector3(transform.position.x -.6f , transform.position.y + .1f, 0), Quaternion.identity); break;
+                    case 1: enemyProjectileClone = Instantiate(level6BossProjectilePrefab_2, new Vector3(transform.position.x , transform.position.y - 3.15f, 0), Quaternion.identity); break;
                 }
             }
             else { 
