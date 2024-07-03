@@ -871,6 +871,8 @@ MonoBehaviour:
   boss1Prefab: {fileID: 3215394579708536403, guid: 279ebfff6a0a43b4e86c1ad35ca305a5, type: 3}
   boss2Prefab: {fileID: 8741175660738162901, guid: 4380db719463df648933fdbef74cbfa1, type: 3}
   level1BossPrefab: {fileID: 263748607764200667, guid: 9e1246f3f034e7b4abc5cd0d2b717dab, type: 3}
+  level2BossPrefab: {fileID: 8283327304360557186, guid: a7cbc95796319f44c97a0a1e662c93bf, type: 3}
+  level3BossPrefab: {fileID: 0}
   enemyCount: 10
   moveDuration: 2
   formationDuration: 2

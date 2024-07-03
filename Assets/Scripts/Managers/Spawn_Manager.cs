@@ -32,6 +32,10 @@ public class SpawnManager : MonoBehaviour
     public GameObject boss1Prefab;
     public GameObject boss2Prefab;
     public GameObject level1BossPrefab;
+    public GameObject level2BossPrefab;
+    public GameObject level3BossPrefab;
+    public GameObject level4BossPrefab;
+    public GameObject level5BossPrefab;
 
     float randomFloatTime;
 
@@ -69,6 +73,18 @@ public class SpawnManager : MonoBehaviour
                 break;
             case ("Level_1"):
                 StartCoroutine(Level1());
+                break;
+            case ("Level_2"):
+                StartCoroutine(Level2());
+                break;
+            case ("Level_3"):
+                StartCoroutine(Level3());
+                break;
+            case ("Level_4"):
+                StartCoroutine(Level4());
+                break;
+            case ("Level_5"):
+                StartCoroutine(Level5());
                 break;
         }
     }
@@ -158,6 +174,59 @@ public class SpawnManager : MonoBehaviour
 
         SpawnBoss(level1BossPrefab);
     }
+    IEnumerator Level2()
+    {
+        yield return StartCoroutine(EnemySpawner(spawnTime));
+
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRight").Length == 0);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("RighttoLeft").Length == 0);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("ToptoBottom").Length == 0);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRightLoop").Length == 0);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("NewLefttoRight").Length == 0);
+
+
+        SpawnBoss(level2BossPrefab);
+    }
+    IEnumerator Level3()
+    {
+        yield return StartCoroutine(EnemySpawner(spawnTime));
+
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRight").Length == 0);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("RighttoLeft").Length == 0);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("ToptoBottom").Length == 0);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRightLoop").Length == 0);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("NewLefttoRight").Length == 0);
+
+
+        SpawnBoss(level3BossPrefab);
+    }
+
+    IEnumerator Level4()
+    {
+        yield return StartCoroutine(EnemySpawner(spawnTime));
+
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRight").Length == 0);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("RighttoLeft").Length == 0);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("ToptoBottom").Length == 0);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRightLoop").Length == 0);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("NewLefttoRight").Length == 0);
+
+
+        SpawnBoss(level4BossPrefab);
+    }IEnumerator Level5()
+    {
+        yield return StartCoroutine(EnemySpawner(spawnTime));
+
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRight").Length == 0);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("RighttoLeft").Length == 0);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("ToptoBottom").Length == 0);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRightLoop").Length == 0);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("NewLefttoRight").Length == 0);
+
+
+        SpawnBoss(level5BossPrefab);
+    }
+
     void SpawnBoss(GameObject bossPrefab)
     {
         Vector3 spawnPosition = centerToCenterPostion; // Start from above the screen

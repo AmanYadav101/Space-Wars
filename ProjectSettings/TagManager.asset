@@ -17,6 +17,10 @@ TagManager:
   - NewLefttoRight
   - LRBoss
   - BossLeftToRight
+  - Level2Boss
+  - Level3Boss
+  - Level4Boss
+  - Level5Boss
   layers:
   - Default
   - TransparentFX
