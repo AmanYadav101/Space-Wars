@@ -36,14 +36,23 @@ public class SpawnManager : MonoBehaviour
     public GameObject level3BossPrefab;
     public GameObject level4BossPrefab;
     public GameObject level5BossPrefab;
-
+    public GameObject level6BossPrefab;
+    public GameObject level7BossPrefab;
+    public GameObject level8BossPrefab_1;
+    public GameObject level8BossPrefab_2;
+    public GameObject level9BossPrefab_1;
+    public GameObject level9BossPrefab_2;
+    public GameObject level9BossPrefab_3;
+    public GameObject level10BossPrefab_1;
+    public GameObject level10BossPrefab_2;
+    public GameObject level10BossPrefab_3;
     float randomFloatTime;
 
-    //Enemy Cluster
+  /*  //Enemy Cluster
     public int enemyCount = 10;
     public float moveDuration = 2f;
     public float formationDuration = 2f;
-    public float radius = 2f;
+    public float radius = 2f;*/
     PolygonCollider2D polygonCollider2D;
     private List<GameObject> enemies = new List<GameObject>();
     private Vector3 centerPosition;
@@ -86,6 +95,24 @@ public class SpawnManager : MonoBehaviour
             case ("Level_5"):
                 StartCoroutine(Level5());
                 break;
+            case ("Level_6"):
+                StartCoroutine(Level6());
+                break;
+            case ("Level_7"):
+                StartCoroutine(Level7());
+                break;
+            case ("Level_8"):
+                StartCoroutine(Level8());
+                break;
+            case ("Level_9"):
+                StartCoroutine(Level9());
+                break;
+            case ("Level_10"):
+                StartCoroutine(Level10());
+                break;
+            /*default:
+                StartCoroutine(SpawnSequence());
+                break;*/
         }
     }
 
@@ -98,6 +125,7 @@ public class SpawnManager : MonoBehaviour
 
     void FireProjectile()
     {
+        // if player is available the proceed
         if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time >= lastShotTime + shootCooldown && isTripleShot)//Time.time is how much time has been elapsed till the start of the game.
                                                                                                           //Fires 3 Projectiles if isTripleShot is set to true. 
         {
@@ -143,8 +171,9 @@ public class SpawnManager : MonoBehaviour
             yield return StartCoroutine(EnemySpawner(spawnTime));
 
             SpawnBoss(boss1Prefab);
-/*            yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRight").Length == 0);
-*/
+            /*            yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRight").Length == 0);
+            */
+            yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
 
 
             yield return new WaitForSeconds(4f);
@@ -154,6 +183,7 @@ public class SpawnManager : MonoBehaviour
             yield return new WaitForSeconds(4f);
 
             SpawnBoss(boss2Prefab);
+            yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
 
             yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LRBoss").Length == 0);
         }
@@ -165,24 +195,18 @@ public class SpawnManager : MonoBehaviour
     {
         yield return StartCoroutine(EnemySpawner(spawnTime));
 
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRight").Length == 0);
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("RighttoLeft").Length == 0);
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("ToptoBottom").Length == 0);
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRightLoop").Length == 0);
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("NewLefttoRight").Length == 0);
+        yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
 
 
         SpawnBoss(level1BossPrefab);
+
+
     }
     IEnumerator Level2()
     {
         yield return StartCoroutine(EnemySpawner(spawnTime));
 
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRight").Length == 0);
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("RighttoLeft").Length == 0);
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("ToptoBottom").Length == 0);
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRightLoop").Length == 0);
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("NewLefttoRight").Length == 0);
+        yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
 
 
         SpawnBoss(level2BossPrefab);
@@ -191,11 +215,7 @@ public class SpawnManager : MonoBehaviour
     {
         yield return StartCoroutine(EnemySpawner(spawnTime));
 
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRight").Length == 0);
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("RighttoLeft").Length == 0);
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("ToptoBottom").Length == 0);
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRightLoop").Length == 0);
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("NewLefttoRight").Length == 0);
+        yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
 
 
         SpawnBoss(level3BossPrefab);
@@ -205,11 +225,7 @@ public class SpawnManager : MonoBehaviour
     {
         yield return StartCoroutine(EnemySpawner(spawnTime));
 
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRight").Length == 0);
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("RighttoLeft").Length == 0);
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("ToptoBottom").Length == 0);
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRightLoop").Length == 0);
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("NewLefttoRight").Length == 0);
+        yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
 
 
         SpawnBoss(level4BossPrefab);
@@ -217,16 +233,91 @@ public class SpawnManager : MonoBehaviour
     {
         yield return StartCoroutine(EnemySpawner(spawnTime));
 
+        yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
+
+
+        SpawnBoss(level5BossPrefab);
+    }
+    IEnumerator Level6()
+    {
+        
+        yield return StartCoroutine(EnemySpawner(spawnTime));
+
+        yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
+
+
+        SpawnBoss(level6BossPrefab);
+
+    }IEnumerator Level7()
+    {
+        
+        yield return StartCoroutine(EnemySpawner(spawnTime));
+
+        yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
+
+        SpawnBoss(level7BossPrefab);
+
+    }
+    IEnumerator Level8() 
+    {
+        yield return StartCoroutine(EnemySpawner(spawnTime));
+
+        yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
+
+        SpawnBoss(level8BossPrefab_1);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level8Boss_1").Length ==0);
+        yield return StartCoroutine(EnemySpawner(spawnTime));
+
+        yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
+
+        SpawnBoss(level8BossPrefab_2);
+    }IEnumerator Level9() 
+    {
+        yield return StartCoroutine(EnemySpawner(spawnTime));
+
+        yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
+
+        SpawnBoss(level9BossPrefab_1);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level9Boss_1").Length ==0);
+        yield return StartCoroutine(EnemySpawner(spawnTime)); 
+        yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
+
+        SpawnBoss(level9BossPrefab_2);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level9Boss_2").Length == 0);
+        SpawnBoss(level9BossPrefab_3);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level9Boss_3").Length == 0);
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene("Level_10");
+
+
+    }
+    IEnumerator Level10() 
+    {
+        yield return StartCoroutine(EnemySpawner(spawnTime));
+
+        yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
+
+        SpawnBoss(level10BossPrefab_1);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level10Boss_1").Length ==0);
+        yield return StartCoroutine(EnemySpawner(spawnTime)); 
+        yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
+
+        SpawnBoss(level10BossPrefab_2);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level10Boss_2").Length == 0);
+        yield return StartCoroutine(EnemySpawner(spawnTime));
+
+        yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
+        SpawnBoss(level10BossPrefab_3);
+     
+    }
+    IEnumerator WaitUntilEnemiesAreDestroyed()
+    {
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRight").Length == 0);
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("RighttoLeft").Length == 0);
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("ToptoBottom").Length == 0);
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LefttoRightLoop").Length == 0);
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("NewLefttoRight").Length == 0);
-
-
-        SpawnBoss(level5BossPrefab);
     }
-
     void SpawnBoss(GameObject bossPrefab)
     {
         Vector3 spawnPosition = centerToCenterPostion; // Start from above the screen
@@ -272,14 +363,30 @@ public class SpawnManager : MonoBehaviour
     }
     IEnumerator EnemySpawner(float duration)
     {
-        float endTime = Time.time + duration;
 
-        while (Time.time < endTime)
+        if (SceneManager.GetActiveScene().name == "Level_6")
         {
-            randomFloatTime = Random.Range(2f,3f);
-            yield return new WaitForSeconds(randomFloatTime);
-            SpawnRandomEnemy();
-            
+            float endTime = Time.time + duration;
+
+            while (Time.time < endTime)
+            {
+                randomFloatTime = Random.Range(1.5f, 2f);
+                yield return new WaitForSeconds(randomFloatTime);
+                SpawnRandomEnemy();
+
+            }
+        }
+        else
+        {
+            float endTime = Time.time + duration;
+
+            while (Time.time < endTime)
+            {
+                randomFloatTime = Random.Range(2f, 3f);
+                yield return new WaitForSeconds(randomFloatTime);
+                SpawnRandomEnemy();
+
+            }
         }
     }
     Vector3 GetRandomTopPosition()

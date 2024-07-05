@@ -127,37 +127,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2679423408484447066, guid: bb10bf615efc31849ac8ff649045abc5, type: 3}
   m_PrefabInstance: {fileID: 1532195051}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &188254900
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 188254901}
-  m_Layer: 0
-  m_Name: Enemy Ships
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
---- !u!4 &188254901
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 188254900}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: -0.0577452}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &358522108 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2974788075401291419, guid: 04862e7313bd34c4ea6352e281035497, type: 3}
@@ -805,6 +774,9 @@ MonoBehaviour:
   level1BossPrefab: {fileID: 263748607764200667, guid: 9e1246f3f034e7b4abc5cd0d2b717dab, type: 3}
   level2BossPrefab: {fileID: 8283327304360557186, guid: a7cbc95796319f44c97a0a1e662c93bf, type: 3}
   level3BossPrefab: {fileID: 3637370910569543989, guid: c69ba6a1766ae1141a721409e2e4edf1, type: 3}
+  level4BossPrefab: {fileID: 0}
+  level5BossPrefab: {fileID: 0}
+  level6BossPrefab: {fileID: 0}
   enemyCount: 10
   moveDuration: 2
   formationDuration: 2
@@ -958,7 +930,6 @@ SceneRoots:
   - {fileID: 7240110806350798672}
   - {fileID: 2144750617}
   - {fileID: 4181071293498845029}
-  - {fileID: 188254901}
   - {fileID: 8281447587924481554}
   - {fileID: 1961537913}
   - {fileID: 1659654316}

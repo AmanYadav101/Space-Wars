@@ -20,7 +20,19 @@ public class Enemy_Manager : MonoBehaviour
     public GameObject level5BossProjectilePrefab;
     public GameObject level6BossProjectilePrefab_1;
     public GameObject level6BossProjectilePrefab_2;
-
+    public GameObject level7BossProjectilePrefab;
+    public GameObject level8BossProjectilePrefab_1;
+    public GameObject level8BossProjectilePrefab_2;
+    public GameObject level9BossProjectilePrefab_1;
+    public GameObject level9BossProjectilePrefab_2;
+    public GameObject level9BossProjectilePrefab_3;
+    public GameObject level10Boss1ProjectilePrefab_1;
+    public GameObject level10Boss1ProjectilePrefab_2;
+    public GameObject level10Boss2ProjectilePrefab_1;
+    public GameObject level10Boss2ProjectilePrefab_2;
+    public GameObject level10Boss3ProjectilePrefab_1;
+    public GameObject level10Boss3ProjectilePrefab_2;
+    
     public GameObject enemyProjectileClone;
     public GameObject speedUpPowerUpPrefab;
     public GameObject shieldPowerUpPrefab;
@@ -68,9 +80,14 @@ public class Enemy_Manager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (gameObject.tag == "BossLeftToRight"||gameObject.tag == "Level2Boss" || 
-            gameObject.tag == "Level3Boss" || gameObject.tag == "Level4Boss" || 
-            gameObject.tag == "Level5Boss" || gameObject.tag == "Level6Boss")
+        if (gameObject.tag == "BossLeftToRight" || gameObject.tag == "Level2Boss" ||
+            gameObject.tag == "Level3Boss" || gameObject.tag == "Level4Boss" ||
+            gameObject.tag == "Level5Boss" || gameObject.tag == "Level6Boss" ||
+            gameObject.tag == "Level7Boss"|| gameObject.tag == "Level8Boss_1" ||
+            gameObject.tag == "Level8Boss_2" || gameObject.tag == "Level9Boss_1" || 
+            gameObject.tag == "Level9Boss_2" || gameObject.tag == "Level9Boss_3" ||
+            gameObject.tag == "Level10Boss_1" || gameObject.tag == "Level10Boss_2" ||
+            gameObject.tag == "Level10Boss_3") 
         {
             Debug.Log(bossCurrentHealth);
             if (collision.gameObject.tag == "Laser")
@@ -168,7 +185,12 @@ public class Enemy_Manager : MonoBehaviour
 
         if (gameObject.tag == "BossLeftToRight" || gameObject.tag == "Level2Boss"||
             gameObject.tag == "Level3Boss" || gameObject.tag == "Level4Boss" ||
-            gameObject.tag == "Level5Boss" || gameObject.tag == "Level6Boss")
+            gameObject.tag == "Level5Boss" || gameObject.tag == "Level6Boss" ||
+            gameObject.tag == "Level7Boss" || gameObject.tag == "Level8Boss_1" ||
+            gameObject.tag == "Level8Boss_2" || gameObject.tag == "Level9Boss_1" ||
+            gameObject.tag == "Level9Boss_2" || gameObject.tag == "Level9Boss_3" ||
+            gameObject.tag == "Level10Boss_1" || gameObject.tag == "Level10Boss_2" ||
+            gameObject.tag == "Level10Boss_3")
         {
             if(collision.gameObject.tag == "Laser") 
             { 
@@ -242,19 +264,13 @@ public class Enemy_Manager : MonoBehaviour
                 switch (clip.name)
                 {
                     case "Enemy_Destroyed":
-                        destroyTime = clip.length;//sets the variable to the length of the clip 
-                        break;
                     case "Boss Destroyed":
-                        destroyTime = clip.length;
-                        break;
                     case "Level2BossDestroy":
-                        destroyTime = clip.length;
-                        break;
                     case "Level 4 Boss Destroyed":
-                        destroyTime = clip.length; 
-                        break;
                     case "Level 5 Boss Destroyed":
-                        destroyTime = clip.length; 
+                    case "Level 6 Boss Destroyed":
+                    case "Level 7 Boss Destroyed":
+                        destroyTime = clip.length-1f;//sets the variable to the length of the clip 
                         break;
                     default:
                         destroyTime = 4f;
@@ -266,7 +282,7 @@ public class Enemy_Manager : MonoBehaviour
 
     void EnemyFireProjectile()
     {
-        if (Random.Range(0f,1000)<200f )
+        if (Random.Range(0f,1000)<1f )
         {
             if(gameObject.tag == "BossLeftToRight")
             {
@@ -303,6 +319,53 @@ public class Enemy_Manager : MonoBehaviour
                 {
                     case 0: enemyProjectileClone = Instantiate(level6BossProjectilePrefab_1, new Vector3(transform.position.x -.6f , transform.position.y + .1f, 0), Quaternion.identity); break;
                     case 1: enemyProjectileClone = Instantiate(level6BossProjectilePrefab_2, new Vector3(transform.position.x , transform.position.y - 3.15f, 0), Quaternion.identity); break;
+                }
+            }
+            else if(gameObject.tag == "Level7Boss")
+            {
+                enemyProjectileClone = Instantiate(level7BossProjectilePrefab, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+            }
+            else if (gameObject.tag == "Level8Boss_1")
+            {
+                enemyProjectileClone = Instantiate(level8BossProjectilePrefab_1, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+            }
+            else if(gameObject.tag == "Level8Boss_2")
+            {
+                enemyProjectileClone = Instantiate(level8BossProjectilePrefab_2, new Vector3(transform.position.x-.5f, transform.position.y-2.3f, 0), Quaternion.identity);
+
+            }else if (gameObject.tag == "Level9Boss_1")
+            {
+                enemyProjectileClone = Instantiate(level9BossProjectilePrefab_1, new Vector3(transform.position.x, transform.position.y-1f, 0), Quaternion.identity);
+            }
+            else if(gameObject.tag == "Level9Boss_2")
+            {
+                enemyProjectileClone = Instantiate(level9BossProjectilePrefab_2, new Vector3(transform.position.x-.45f, transform.position.y-.8f, 0), Quaternion.identity);
+
+            }else if(gameObject.tag == "Level9Boss_3")
+            {
+                enemyProjectileClone = Instantiate(level9BossProjectilePrefab_3, new Vector3(transform.position.x-7.8f, transform.position.y - 1.65f, 0), Quaternion.identity);
+
+            }
+            else if (gameObject.tag == "Level10Boss_1")
+            {
+                switch (Random.Range(0, 2))
+                {
+                    case 0: enemyProjectileClone = Instantiate(level10Boss1ProjectilePrefab_1, new Vector3(transform.position.x-1.1f, transform.position.y-.2f , 0), Quaternion.identity); break;
+                    case 1: enemyProjectileClone = Instantiate(level10Boss1ProjectilePrefab_2, new Vector3(transform.position.x-1.4f, transform.position.y-1.2f, 0), Quaternion.identity); break;
+                }
+            }else if (gameObject.tag == "Level10Boss_2")
+            {
+                switch (Random.Range(0, 2))
+                {
+                    case 0: enemyProjectileClone = Instantiate(level10Boss2ProjectilePrefab_1, new Vector3(transform.position.x-0.35f , transform.position.y -0.7f, 0), Quaternion.identity); break;
+                    case 1: enemyProjectileClone = Instantiate(level10Boss2ProjectilePrefab_2, new Vector3(transform.position.x-0.1f, transform.position.y - .5f, 0), Quaternion.identity); break;
+                }
+            }else if (gameObject.tag == "Level10Boss_3")
+            {
+                switch (Random.Range(0, 2))
+                {
+                    case 0: enemyProjectileClone = Instantiate(level10Boss3ProjectilePrefab_1, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity); break;
+                    case 1: enemyProjectileClone = Instantiate(level10Boss3ProjectilePrefab_2, new Vector3(transform.position.x, transform.position.y , 0), Quaternion.identity); break;
                 }
             }
             else { 
@@ -416,8 +479,17 @@ public class Enemy_Manager : MonoBehaviour
             case "Level4Boss":
             case "Level5Boss":
             case "Level6Boss":
-/*                Debug.Log(viewportPosition.x);
-*/                
+            case "Level7Boss":
+            case "Level8Boss_1":
+            case "Level8Boss_2":
+            case "Level9Boss_1":
+            case "Level9Boss_2":
+            case "Level9Boss_3":
+            case "Level10Boss_1":
+            case "Level10Boss_2":
+            case "Level10Boss_3":
+                /*                Debug.Log(viewportPosition.x);
+                */
                 if (viewportPosition.x > 0.8f)
                 {
                      

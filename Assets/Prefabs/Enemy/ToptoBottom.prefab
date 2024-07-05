@@ -273,6 +273,14 @@ MonoBehaviour:
   animator: {fileID: 4252222809064929106}
   enemy: {fileID: 8313321182695970449}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}

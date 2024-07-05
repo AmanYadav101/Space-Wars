@@ -21,6 +21,16 @@ TagManager:
   - Level3Boss
   - Level4Boss
   - Level5Boss
+  - Level6Boss
+  - Level7Boss
+  - Level8Boss_1
+  - Level8Boss_2
+  - Level9Boss_1
+  - Level9Boss_2
+  - Level9Boss_3
+  - Level10Boss_1
+  - Level10Boss_2
+  - Level10Boss_3
   layers:
   - Default
   - TransparentFX
