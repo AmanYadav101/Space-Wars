@@ -211,6 +211,7 @@ public class SpawnManager : MonoBehaviour
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("BossLeftToRight").Length == 0);
         Time.timeScale = 0;
         LevelFinsihUI.SetActive(true);
+        UnlockNextLevel(2); 
 
 
     }
@@ -226,6 +227,7 @@ public class SpawnManager : MonoBehaviour
         Time.timeScale = 0;
 
         LevelFinsihUI.SetActive(true);
+        UnlockNextLevel(3);
 
     }
     IEnumerator Level3()
@@ -239,6 +241,7 @@ public class SpawnManager : MonoBehaviour
         yield return new WaitUntil(()=> GameObject.FindGameObjectsWithTag("Level3Boss").Length==0);
         Time.timeScale = 0;
         LevelFinsihUI.SetActive(true);
+        UnlockNextLevel(4);
 
     }
 
@@ -253,6 +256,8 @@ public class SpawnManager : MonoBehaviour
         yield return new WaitUntil(()=> GameObject.FindGameObjectsWithTag("Level4Boss").Length==0) ;
         Time.timeScale = 0;
         LevelFinsihUI.SetActive(true);
+            UnlockNextLevel(5);
+
     }
     IEnumerator Level5()
     {
@@ -265,6 +270,7 @@ public class SpawnManager : MonoBehaviour
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level5Boss").Length == 0);
         Time.timeScale = 0;
         LevelFinsihUI.SetActive(true);
+        UnlockNextLevel(6);
 
     }
     IEnumerator Level6()
@@ -279,6 +285,7 @@ public class SpawnManager : MonoBehaviour
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level6Boss").Length == 0);
         Time.timeScale = 0;
         LevelFinsihUI.SetActive(true);
+        UnlockNextLevel(7);
 
     }
     IEnumerator Level7()
@@ -292,6 +299,7 @@ public class SpawnManager : MonoBehaviour
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level7Boss").Length == 0);
         Time.timeScale = 0;
         LevelFinsihUI.SetActive(true);
+        UnlockNextLevel(8);
 
     }
     IEnumerator Level8() 
@@ -310,6 +318,7 @@ public class SpawnManager : MonoBehaviour
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level8Boss_2").Length == 0);
         Time.timeScale = 0;
         LevelFinsihUI.SetActive(true);
+        UnlockNextLevel(9);
 
     }
     IEnumerator Level9() 
@@ -330,6 +339,7 @@ public class SpawnManager : MonoBehaviour
         Time.timeScale = 0;
         LevelFinsihUI.SetActive(true);
 
+        UnlockNextLevel(10);
 
     }
     IEnumerator Level10() 
@@ -403,6 +413,17 @@ public class SpawnManager : MonoBehaviour
             case 3:
                 enemyClone = Instantiate(NewLefttoRight, middleLeftPosition, Quaternion.identity);
                 break;
+        }
+    }
+
+    //Being called after every level. 
+    public void UnlockNextLevel(int levelIndex)
+    {
+        int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
+        if (levelIndex >= unlockedLevel)
+        {
+            PlayerPrefs.SetInt("UnlockedLevel", levelIndex + 1);
+            PlayerPrefs.Save();
         }
     }
     IEnumerator EnemySpawner(float duration)
