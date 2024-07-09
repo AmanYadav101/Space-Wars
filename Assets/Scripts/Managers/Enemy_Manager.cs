@@ -32,6 +32,12 @@ public class Enemy_Manager : MonoBehaviour
     public GameObject level10Boss2ProjectilePrefab_2;
     public GameObject level10Boss3ProjectilePrefab_1;
     public GameObject level10Boss3ProjectilePrefab_2;
+
+
+    private int bossMaxHealth = 1000;
+    public int currentHealth;
+    public Health_Bar healthBar;
+    
     
     public GameObject enemyProjectileClone;
     public GameObject speedUpPowerUpPrefab;
@@ -47,7 +53,7 @@ public class Enemy_Manager : MonoBehaviour
     private bool movingLeft = true;
     private bool isDestroyed = false;
 /*    private bool canShoot = true;
-*/    private int bossMaxHealth = 1000;
+*/    
     private int bossCurrentHealth;
     private float destroyTime;//Length of the "Enemy_Destroyed" clip.
 
@@ -57,7 +63,9 @@ public class Enemy_Manager : MonoBehaviour
     void Start()
     {
         bossCurrentHealth = bossMaxHealth;
-
+        if (healthBar != null) { 
+        healthBar.SetMaxHealth(bossCurrentHealth);
+        }
         mainCamera = Camera.main;
 
         UpdateAnimClipTimes(); //Gets the length of all the animations in the animator attached to the game object at the start of the game.
@@ -102,6 +110,7 @@ public class Enemy_Manager : MonoBehaviour
                 if (bossCurrentHealth > 0)
                 {
                     bossCurrentHealth -= 50;
+                    healthBar.SetHealth(bossCurrentHealth);
                     if (bossCurrentHealth <= 0)
                     {
                         StartCoroutine(DestroyEnemy());
