@@ -27,6 +27,8 @@ public class Player_Manager : MonoBehaviour
     private bool isInvincible=false;
      PolygonCollider2D polygonCollider2D;
     bool isMoving = false;
+    public GameObject PlayerDeadUI;
+    
     private bool isDestroyed = false;
 
     bool isMoveingLeft = false;
@@ -44,6 +46,7 @@ public class Player_Manager : MonoBehaviour
         middleFire.SetActive(false);
         thrusters.SetActive(false);
         shield.SetActive(false);
+        PlayerDeadUI.SetActive(false);
     }
 
     private void Awake()
@@ -145,12 +148,12 @@ public class Player_Manager : MonoBehaviour
         // world is (-infinity , -infinity) to (+infinity, +infinity)
         //viewport is the area covered by the camera. (0,0) for bottom left and (1,1) for top right corner
         Vector2 viewportPosition = mainCamera.WorldToViewportPoint(position);
-        if(viewportPosition.x > 1.08f)
+        if(viewportPosition.x > .99f)
         {
-            position.x = mainCamera.ViewportToWorldPoint(new Vector2(0, viewportPosition.y)).x;
+            position.x = mainCamera.ViewportToWorldPoint(new Vector2(0.1f, viewportPosition.y)).x;
         }
-        else if(viewportPosition.x<-0.08f){
-            position.x = mainCamera.ViewportToWorldPoint(new Vector2(1, viewportPosition.y)).x;
+        else if(viewportPosition.x<0.1f){
+            position.x = mainCamera.ViewportToWorldPoint(new Vector2(.99f, viewportPosition.y)).x;
 
         }
         transform.position = position;
@@ -236,7 +239,14 @@ public class Player_Manager : MonoBehaviour
 
 
         yield return new WaitForSeconds(2.63f);
+        Time.timeScale = 0;
+        /*        gameObject.SetActive(false);
+        */
         Destroy(gameObject);
+
+        PlayerDeadUI.SetActive(true);
+        
+
     }
     //Turns on the Thrusters animation when the moveSpeed gets equals to the newSpeed.
     void TurnOnThrusters()

@@ -46,8 +46,8 @@ public class Enemy_Manager : MonoBehaviour
     private float dropChance = .3f;
     private bool movingLeft = true;
     private bool isDestroyed = false;
-    private bool canShoot = false;
-    private int bossMaxHealth = 1000;
+/*    private bool canShoot = true;
+*/    private int bossMaxHealth = 1000;
     private int bossCurrentHealth;
     private float destroyTime;//Length of the "Enemy_Destroyed" clip.
 
@@ -70,7 +70,13 @@ public class Enemy_Manager : MonoBehaviour
         {
             EnemyBehaviour();
             EnemyFireProjectile();
-            
+
+           /* Debug.Log(canShoot);
+            if (canShoot) {
+                Debug.Log("Inside ifCanShoot");
+
+            }*/
+
         }
         else if (isDestroyed) 
         {
@@ -282,7 +288,13 @@ public class Enemy_Manager : MonoBehaviour
 
     void EnemyFireProjectile()
     {
-        if (Random.Range(0f,1000)<1f )
+        if (!FindObjectOfType<GameManager>() || !FindObjectOfType<Player_Manager>())
+        {
+            return;
+        }
+        if (!FindObjectOfType<GameManager>().GetIsPaused() && !FindObjectOfType<Player_Manager>().GetIsDestroyed()) { 
+        
+        if (Random.Range(0f,1000)<1.5f )
         {
             if(gameObject.tag == "BossLeftToRight")
             {
@@ -370,6 +382,7 @@ public class Enemy_Manager : MonoBehaviour
             }
             else { 
             enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x, transform.position.y - .2f, 0), enemy.transform.rotation);
+            }
             }
         }
     }
@@ -552,7 +565,14 @@ public class Enemy_Manager : MonoBehaviour
 
     public void StartShooting()
     {
-        canShoot = true;
+        /*if (FindObjectOfType<GameManager>().GetIsPaused()) {
+
+            canShoot = false;
+        }
+        else
+        {
+            canShoot = true;
+        }*/
         polygonCollider2D.isTrigger = false;
 
     }

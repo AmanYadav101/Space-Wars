@@ -16,7 +16,7 @@ public class SpawnManager : MonoBehaviour
     private bool isTripleShot;
 
     private GameObject projectileClone;
-    [SerializeField] private float shootCooldown = .5f;
+    [SerializeField] private float shootCooldown = .25f;
     private float lastShotTime;
     public GameObject enemyPrefab;
     private GameObject enemyClone;
@@ -48,6 +48,10 @@ public class SpawnManager : MonoBehaviour
     public GameObject level10BossPrefab_3;
     float randomFloatTime;
 
+
+    public GameObject pauseMenuUI;
+    public GameObject LevelFinsihUI;
+    private List<IEnumerator> runningCoroutines = new List<IEnumerator>();
   /*  //Enemy Cluster
     public int enemyCount = 10;
     public float moveDuration = 2f;
@@ -60,6 +64,8 @@ public class SpawnManager : MonoBehaviour
 
     private void Start()
     {
+        LevelFinsihUI.SetActive(false);
+        Time.timeScale = 1;
         lastShotTime = -shootCooldown; //lastShotTime = -shootCooldown so that the player is able to shoot the projectile at 0 secs.
                                        //if lastShotTime is initizlized with 0, then we wont be able to shoot at the start of the game. We will have to wait for 1 sec before shooting.
 
@@ -119,12 +125,15 @@ public class SpawnManager : MonoBehaviour
 
     void Update()
     {
-
-        FireProjectile();
+        if (player != null && player.activeSelf && player.GetComponent<Player_Manager>().currentHealth > 0)
+        {
+            FireProjectile();
+        }
     }
 
     void FireProjectile()
     {
+
         // if player is available the proceed
         if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time >= lastShotTime + shootCooldown && isTripleShot)//Time.time is how much time has been elapsed till the start of the game.
                                                                                                           //Fires 3 Projectiles if isTripleShot is set to true. 
@@ -186,6 +195,7 @@ public class SpawnManager : MonoBehaviour
             yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
 
             yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("LRBoss").Length == 0);
+        
         }
 
     }
@@ -197,8 +207,10 @@ public class SpawnManager : MonoBehaviour
 
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
 
-
         SpawnBoss(level1BossPrefab);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("BossLeftToRight").Length == 0);
+        Time.timeScale = 0;
+        LevelFinsihUI.SetActive(true);
 
 
     }
@@ -210,6 +222,11 @@ public class SpawnManager : MonoBehaviour
 
 
         SpawnBoss(level2BossPrefab);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level2Boss").Length == 0);
+        Time.timeScale = 0;
+
+        LevelFinsihUI.SetActive(true);
+
     }
     IEnumerator Level3()
     {
@@ -219,6 +236,10 @@ public class SpawnManager : MonoBehaviour
 
 
         SpawnBoss(level3BossPrefab);
+        yield return new WaitUntil(()=> GameObject.FindGameObjectsWithTag("Level3Boss").Length==0);
+        Time.timeScale = 0;
+        LevelFinsihUI.SetActive(true);
+
     }
 
     IEnumerator Level4()
@@ -229,7 +250,11 @@ public class SpawnManager : MonoBehaviour
 
 
         SpawnBoss(level4BossPrefab);
-    }IEnumerator Level5()
+        yield return new WaitUntil(()=> GameObject.FindGameObjectsWithTag("Level4Boss").Length==0) ;
+        Time.timeScale = 0;
+        LevelFinsihUI.SetActive(true);
+    }
+    IEnumerator Level5()
     {
         yield return StartCoroutine(EnemySpawner(spawnTime));
 
@@ -237,6 +262,10 @@ public class SpawnManager : MonoBehaviour
 
 
         SpawnBoss(level5BossPrefab);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level5Boss").Length == 0);
+        Time.timeScale = 0;
+        LevelFinsihUI.SetActive(true);
+
     }
     IEnumerator Level6()
     {
@@ -247,8 +276,12 @@ public class SpawnManager : MonoBehaviour
 
 
         SpawnBoss(level6BossPrefab);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level6Boss").Length == 0);
+        Time.timeScale = 0;
+        LevelFinsihUI.SetActive(true);
 
-    }IEnumerator Level7()
+    }
+    IEnumerator Level7()
     {
         
         yield return StartCoroutine(EnemySpawner(spawnTime));
@@ -256,6 +289,9 @@ public class SpawnManager : MonoBehaviour
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
 
         SpawnBoss(level7BossPrefab);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level7Boss").Length == 0);
+        Time.timeScale = 0;
+        LevelFinsihUI.SetActive(true);
 
     }
     IEnumerator Level8() 
@@ -271,7 +307,12 @@ public class SpawnManager : MonoBehaviour
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
 
         SpawnBoss(level8BossPrefab_2);
-    }IEnumerator Level9() 
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level8Boss_2").Length == 0);
+        Time.timeScale = 0;
+        LevelFinsihUI.SetActive(true);
+
+    }
+    IEnumerator Level9() 
     {
         yield return StartCoroutine(EnemySpawner(spawnTime));
 
@@ -286,8 +327,8 @@ public class SpawnManager : MonoBehaviour
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level9Boss_2").Length == 0);
         SpawnBoss(level9BossPrefab_3);
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level9Boss_3").Length == 0);
-        yield return new WaitForSeconds(4f);
-        SceneManager.LoadScene("Level_10");
+        Time.timeScale = 0;
+        LevelFinsihUI.SetActive(true);
 
 
     }
@@ -308,7 +349,10 @@ public class SpawnManager : MonoBehaviour
 
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
         SpawnBoss(level10BossPrefab_3);
-     
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level10Boss_3").Length == 0);
+        Time.timeScale = 0;
+        SceneManager.LoadScene("Main Menu");
+
     }
     IEnumerator WaitUntilEnemiesAreDestroyed()
     {
@@ -410,4 +454,25 @@ public class SpawnManager : MonoBehaviour
         randomPosition.z = 0;
         return randomPosition;
     }
+
+    public void LevelFinsih()
+    {
+        Time.timeScale = 0f;
+        pauseMenuUI.SetActive(true);
+    }
+   public void PauseSpawning()
+    {
+        foreach (var coroutine in runningCoroutines) 
+        { 
+            StopCoroutine(coroutine);
+        }
+    }
+    public void ResumeSpawning()
+    {
+        foreach(var coroutine in runningCoroutines)
+        {
+            StartCoroutine(coroutine);
+        }
+    }
+
 }

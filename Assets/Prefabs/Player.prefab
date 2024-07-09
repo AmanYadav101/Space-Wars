@@ -188,6 +188,7 @@ MonoBehaviour:
   currentHealth: 0
   healthBar: {fileID: 2081924667153714541}
   shield: {fileID: 3840375367526261943}
+  PlayerDeadUI: {fileID: 0}
 --- !u!60 &-835566436680224597
 PolygonCollider2D:
   m_ObjectHideFlags: 0
