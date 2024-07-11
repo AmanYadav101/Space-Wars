@@ -25,7 +25,7 @@ public class SpawnManager : MonoBehaviour
     public Camera mainCamera;
     public int max_Count = 10;
     float spawnTime = 20f;
-
+    
 
     public GameObject ToptoBottomPrefab;
     public GameObject RighttoLeftPrefab;
