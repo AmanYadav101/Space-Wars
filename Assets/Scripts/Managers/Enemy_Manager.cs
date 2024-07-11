@@ -4,6 +4,7 @@ using System.Security.Authentication.ExtendedProtection;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Enemy_Manager : MonoBehaviour
 {
@@ -62,9 +63,12 @@ public class Enemy_Manager : MonoBehaviour
     private float nextFireTime; // Timer for non-boss enemies
 
 
+    static int score = 0;
+
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(score);
         isDestroyed = false;
         bossCurrentHealth = bossMaxHealth;
         if (healthBar != null)
@@ -143,11 +147,9 @@ public class Enemy_Manager : MonoBehaviour
                 gameObject.tag == "Level10Boss_1" || gameObject.tag == "Level10Boss_2" ||
                 gameObject.tag == "Level10Boss_3")
             {
-                Debug.Log(bossCurrentHealth);
                 if (collision.gameObject.tag == "Laser")
                 {
                     Destroy(collision.gameObject);
-                    Debug.Log("Laser Destroyed");
                     if (bossCurrentHealth > 0)
                     {
                         bossCurrentHealth -= 50;
@@ -179,12 +181,17 @@ public class Enemy_Manager : MonoBehaviour
                     gameObject.tag == "LefttoRightLoop") &&
                     collision.gameObject.tag == "Laser")
             {
+                score += 1;
+                Debug.Log(score);
                 Destroy(collision.gameObject);//Destroys the laser that hit the enemy
                 StartCoroutine(DestroyEnemy());
             }
             
             if (collision.gameObject.tag == "Boundry")
             {
+                score -= 1;
+                Debug.Log(score);
+
                 StartCoroutine(DestroyEnemy());
             }
             if ((gameObject.tag == "ToptoBottom" ||
@@ -195,6 +202,9 @@ public class Enemy_Manager : MonoBehaviour
                     gameObject.tag == "LefttoRightLoop") &&
                     collision.gameObject.tag == "Shield")
             {
+                score += 1;
+                Debug.Log(score);
+
                 StartCoroutine(DestroyEnemy());
 
             }

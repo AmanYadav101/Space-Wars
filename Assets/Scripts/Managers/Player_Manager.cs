@@ -34,7 +34,7 @@ public class Player_Manager : MonoBehaviour
 
     bool isMoveingLeft = false;
     bool isMoveingRight = false;
-
+    
 
     private Vector2 startTouchPosition;
     private Vector2 currentTouchPosition;
@@ -194,7 +194,6 @@ public class Player_Manager : MonoBehaviour
     {
         
         
-            Debug.Log("Name of Object Colliding with player : " + collision.gameObject.name);
 
         if (collision.gameObject.CompareTag("Enemy Laser"))
         {
@@ -236,10 +235,8 @@ public class Player_Manager : MonoBehaviour
             if (isInvincible) { return; }
             Enemy_Manager enemy = collision.gameObject.GetComponent<Enemy_Manager>();
             
-            Debug.Log("Enemy Destroyed?: " + enemy.GetIsDestroyed());
             if (enemy != null && enemy.GetIsDestroyed()){
        
-                Debug.Log("Inside if");
                 if (currentHealth > 0)
                 {
                     Handheld.Vibrate();
