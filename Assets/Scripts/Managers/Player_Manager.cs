@@ -69,8 +69,7 @@ public class Player_Manager : MonoBehaviour
         if (!isDestroyed) 
         { 
         Movement();
-/*        TeleportPlayer(); 
-*/        TurnOnFire();
+        TurnOnFire();
         TurnOnThrusters();
         TurnOnShield();//Turns on the shield when the IsInvincible boolean gets to true in the Shield_Powerup Script
         }
@@ -224,14 +223,7 @@ public class Player_Manager : MonoBehaviour
                 StartCoroutine(DestroyPlayer());
             }
         }
-        /* if (collision.gameObject.tag == "BossLeftToRight")
-        {
-
-            Debug.Log("Collided with BossLeftToRight");
-            currentHealth = 0;
-            StartCoroutine(DestroyPlayer());
-
-        }*/
+        
         else if (collision.gameObject.CompareTag("Enemy") ||
             collision.gameObject.CompareTag("LefttoRight") ||
             collision.gameObject.CompareTag("RighttoLeft") ||
@@ -398,15 +390,7 @@ public class Player_Manager : MonoBehaviour
     {
         return isDestroyed;
     }
-    /*public void SetCanTakeDamage(bool canTake)
-    {
-        canTakeDamage = canTake;
-    }
-
-    public bool GetCanTakeDamage()
-    {
-        return canTakeDamage;
-    }*/
+   
 }
 
 
