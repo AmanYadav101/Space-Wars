@@ -1162,6 +1162,14 @@ PrefabInstance:
       propertyPath: movemeny_JoyStick
       value: 
       objectReference: {fileID: 1446710157}
+    - target: {fileID: 3915857412231595225, guid: 04862e7313bd34c4ea6352e281035497, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3915857412231595225, guid: 04862e7313bd34c4ea6352e281035497, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6936061473422393198, guid: 04862e7313bd34c4ea6352e281035497, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0054

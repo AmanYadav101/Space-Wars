@@ -314,7 +314,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.61, z: 0}
-  m_LocalScale: {x: 0.23, y: 0.23, z: 0.23}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 838225577391306180}
@@ -1432,6 +1432,7 @@ MonoBehaviour:
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
   bossProjectile1: {fileID: 7238650832050970631, guid: 99e8e617ad99bba4e8506a868ee0b056, type: 3}
   bossProjectile2: {fileID: 7905076762533508821, guid: 31f9dd67d6b54274a956b06ca94e5560, type: 3}
+  level1BossProjectilePrefab: {fileID: 0}
   level2BossProjectilePrefab: {fileID: 3448962863050926423, guid: 98070238596f48c4890aed223005cdb7, type: 3}
   level3BossProjectilePrefab: {fileID: 1536900268799904939, guid: 75b5943cba0adfb4fbd93db808fc1042, type: 3}
   level4BossProjectilePrefab: {fileID: 3808840094458375905, guid: 3469c4775ff7a874c8817cbc8aea604d, type: 3}

@@ -134,7 +134,7 @@ public class Player_Manager : MonoBehaviour
         if (movemeny_JoyStick.joyStickVec.y != 0 || movemeny_JoyStick.joyStickVec.x != 0)
         {
             // Apply sensitivity factor
-            Vector3 move = new Vector3(movemeny_JoyStick.joyStickVec.x * movemeny_JoyStick.sensitivity * moveSpeed * Time.deltaTime,
+            Vector3 move = new Vector3(movemeny_JoyStick.joyStickVec.x * movemeny_JoyStick.sensitivity * moveSpeed * 2f * Time.deltaTime,
                                        movemeny_JoyStick.joyStickVec.y * movemeny_JoyStick.sensitivity * moveSpeed * Time.deltaTime, 0);
             Vector3 projectedPosition = transform.position + move;
             Vector2 projectedViewportPosition = Camera.main.WorldToViewportPoint(projectedPosition);
@@ -200,12 +200,13 @@ public class Player_Manager : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy Laser"))
         {
             Destroy(collision.gameObject);
-            Handheld.Vibrate();
             if (isInvincible) { }
 
             else if (currentHealth > 0)//Takes Damage if health is greater than 0 and updates
                                        //the health bar based on the health.
             {
+                Handheld.Vibrate();
+
                 currentHealth -= 20;
                 healthBar.SetHealth(currentHealth);
 
@@ -218,6 +219,8 @@ public class Player_Manager : MonoBehaviour
             }
             else if (currentHealth <= 0)
             {
+                Handheld.Vibrate();
+
                 StartCoroutine(DestroyPlayer());
             }
         }
@@ -237,7 +240,6 @@ public class Player_Manager : MonoBehaviour
             collision.gameObject.CompareTag("LRBoss"))
 
         {
-            Handheld.Vibrate();
 
             if (isInvincible) { return; }
             Enemy_Manager enemy = collision.gameObject.GetComponent<Enemy_Manager>();
@@ -248,6 +250,7 @@ public class Player_Manager : MonoBehaviour
                 Debug.Log("Inside if");
                 if (currentHealth > 0)
                 {
+                    Handheld.Vibrate();
 
 
                     currentHealth -= 40;
@@ -259,6 +262,8 @@ public class Player_Manager : MonoBehaviour
                 }
                 else if (currentHealth <= 0)
                 {
+                    Handheld.Vibrate();
+
                     StartCoroutine(DestroyPlayer());
                 }
 
