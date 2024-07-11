@@ -273,6 +273,29 @@ MonoBehaviour:
   animator: {fileID: 4680403630681365806}
   enemy: {fileID: 623772469786066157}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -552,6 +575,29 @@ MonoBehaviour:
   animator: {fileID: 4677832616525803077}
   enemy: {fileID: 627909612644044678}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -831,6 +877,29 @@ MonoBehaviour:
   animator: {fileID: 4709373947597406591}
   enemy: {fileID: 650551528753979580}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -1110,6 +1179,29 @@ MonoBehaviour:
   animator: {fileID: 6373684680297299413}
   enemy: {fileID: 1166388317806795798}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -1389,6 +1481,29 @@ MonoBehaviour:
   animator: {fileID: 6521124155918060614}
   enemy: {fileID: 1307055798442339717}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -1668,6 +1783,29 @@ MonoBehaviour:
   animator: {fileID: 6579082002636966991}
   enemy: {fileID: 1374072553603444108}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -1947,6 +2085,29 @@ MonoBehaviour:
   animator: {fileID: 6638306788265731040}
   enemy: {fileID: 1476115620626334243}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -2226,6 +2387,29 @@ MonoBehaviour:
   animator: {fileID: 6745731748096443381}
   enemy: {fileID: 1567693319292527158}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -2505,6 +2689,29 @@ MonoBehaviour:
   animator: {fileID: 6830783088293283569}
   enemy: {fileID: 1628023276553217842}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -2784,6 +2991,29 @@ MonoBehaviour:
   animator: {fileID: 6909528052422181563}
   enemy: {fileID: 1711267440124142456}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -3063,6 +3293,29 @@ MonoBehaviour:
   animator: {fileID: 5812055143815786977}
   enemy: {fileID: 1798245564860403746}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -3099,7 +3352,7 @@ Transform:
   m_GameObject: {fileID: 2013185749806884106}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.19000007, y: -1.9499999, z: -0.06189124}
+  m_LocalPosition: {x: 0.11, y: -2.03, z: -0.06189124}
   m_LocalScale: {x: 0.17358041, y: 0.17358041, z: 0.17358041}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -3342,6 +3595,29 @@ MonoBehaviour:
   animator: {fileID: 6029319661859636425}
   enemy: {fileID: 2013185749806884106}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -3621,6 +3897,29 @@ MonoBehaviour:
   animator: {fileID: 6069423930116524670}
   enemy: {fileID: 2046564303358389181}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -3900,6 +4199,29 @@ MonoBehaviour:
   animator: {fileID: 6148062224637977955}
   enemy: {fileID: 2093744504933270688}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -4179,6 +4501,29 @@ MonoBehaviour:
   animator: {fileID: 6132086501802403542}
   enemy: {fileID: 2109298310884116245}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -4458,6 +4803,29 @@ MonoBehaviour:
   animator: {fileID: 6298370472587438799}
   enemy: {fileID: 2248555289560222476}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -4494,7 +4862,7 @@ Transform:
   m_GameObject: {fileID: 2287489854781075270}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.97, y: -1.77, z: -0.06189124}
+  m_LocalPosition: {x: 5.68, y: -2.01, z: -0.06189124}
   m_LocalScale: {x: 0.17358041, y: 0.17358041, z: 0.17358041}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4737,6 +5105,29 @@ MonoBehaviour:
   animator: {fileID: 6332901564608089733}
   enemy: {fileID: 2287489854781075270}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -5016,6 +5407,29 @@ MonoBehaviour:
   animator: {fileID: 7508478353281722143}
   enemy: {fileID: 2337173368054417116}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -5295,6 +5709,29 @@ MonoBehaviour:
   animator: {fileID: 7726017697833139457}
   enemy: {fileID: 2550272850154724546}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -5574,6 +6011,29 @@ MonoBehaviour:
   animator: {fileID: 7814977465431390905}
   enemy: {fileID: 2605428132891220858}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -5853,6 +6313,29 @@ MonoBehaviour:
   animator: {fileID: 7857705481078129666}
   enemy: {fileID: 2688677618718303681}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -6132,6 +6615,29 @@ MonoBehaviour:
   animator: {fileID: 7981368667142356986}
   enemy: {fileID: 2783139942820339257}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -6411,6 +6917,29 @@ MonoBehaviour:
   animator: {fileID: 8060428961898383285}
   enemy: {fileID: 2846366099766470262}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -6690,6 +7219,29 @@ MonoBehaviour:
   animator: {fileID: 8783475541711295132}
   enemy: {fileID: 3582925746143408991}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -6969,6 +7521,29 @@ MonoBehaviour:
   animator: {fileID: 9015623983311460883}
   enemy: {fileID: 3837587719240268752}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -7248,6 +7823,29 @@ MonoBehaviour:
   animator: {fileID: 9058293471860941547}
   enemy: {fileID: 3884832309906555688}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -7527,6 +8125,29 @@ MonoBehaviour:
   animator: {fileID: 8290821716252484055}
   enemy: {fileID: 4274722954146791444}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -7806,6 +8427,29 @@ MonoBehaviour:
   animator: {fileID: 8550668349797629689}
   enemy: {fileID: 4536853273343090490}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -8085,6 +8729,29 @@ MonoBehaviour:
   animator: {fileID: 753589043293744143}
   enemy: {fileID: 4767480984697589196}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -8364,6 +9031,29 @@ MonoBehaviour:
   animator: {fileID: 914188174724185538}
   enemy: {fileID: 4968577328264125441}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -8643,6 +9333,29 @@ MonoBehaviour:
   animator: {fileID: 963364922444732432}
   enemy: {fileID: 4972740102084229587}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -8922,6 +9635,29 @@ MonoBehaviour:
   animator: {fileID: 491253479765043921}
   enemy: {fileID: 5660320922333334290}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -9201,6 +9937,29 @@ MonoBehaviour:
   animator: {fileID: 1809729808629226813}
   enemy: {fileID: 5855035896544754942}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -9480,6 +10239,29 @@ MonoBehaviour:
   animator: {fileID: 1426152240609379748}
   enemy: {fileID: 6599605671699965031}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -9759,6 +10541,29 @@ MonoBehaviour:
   animator: {fileID: 1727600479182105215}
   enemy: {fileID: 6892087392870828988}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -10038,6 +10843,29 @@ MonoBehaviour:
   animator: {fileID: 3189616832423274624}
   enemy: {fileID: 7214762275268200771}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -10317,6 +11145,29 @@ MonoBehaviour:
   animator: {fileID: 2773610655133550598}
   enemy: {fileID: 7935887619102828997}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -10596,6 +11447,29 @@ MonoBehaviour:
   animator: {fileID: 2754666468451313265}
   enemy: {fileID: 7955253610781755314}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -10875,6 +11749,29 @@ MonoBehaviour:
   animator: {fileID: 2823500497486716581}
   enemy: {fileID: 8030799060936408934}
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
+  bossProjectile1: {fileID: 0}
+  bossProjectile2: {fileID: 0}
+  level2BossProjectilePrefab: {fileID: 0}
+  level3BossProjectilePrefab: {fileID: 0}
+  level4BossProjectilePrefab: {fileID: 0}
+  level5BossProjectilePrefab: {fileID: 0}
+  level6BossProjectilePrefab_1: {fileID: 0}
+  level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
@@ -10906,9 +11803,9 @@ Transform:
   m_GameObject: {fileID: 8741175660738162901}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3563, y: 2.154, z: 0.10705}
-  m_LocalScale: {x: 0.79671, y: 0.79671, z: 0.79671}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -1.5829, y: 1.8302, z: 0.090488}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3427736764261752015}
   - {fileID: 3128038167967650880}

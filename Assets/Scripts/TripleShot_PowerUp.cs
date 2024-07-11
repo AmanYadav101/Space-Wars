@@ -6,6 +6,7 @@ public class TripleShot_PowerUp : MonoBehaviour
 {   
     Player_Manager player_manager;
     SpawnManager spawn_manager;
+    AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class TripleShot_PowerUp : MonoBehaviour
 
     private void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         spawn_manager = GameObject.FindFirstObjectByType<SpawnManager>().GetComponent<SpawnManager>();
     }
 
@@ -39,6 +41,7 @@ public class TripleShot_PowerUp : MonoBehaviour
     }
     IEnumerator TripleShotPowerUpCoroutine()
     {
+        audioManager.PlaySFX(audioManager.powerupPickupSFX);
         spawn_manager.SetIsTripleShot(true);
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<PolygonCollider2D>().enabled = false;

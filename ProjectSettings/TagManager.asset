@@ -31,6 +31,7 @@ TagManager:
   - Level10Boss_1
   - Level10Boss_2
   - Level10Boss_3
+  - AudioManager
   layers:
   - Default
   - TransparentFX

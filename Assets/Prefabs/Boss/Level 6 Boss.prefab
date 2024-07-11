@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 52, y: 9}
+  m_SizeDelta: {x: 260, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4310738845850212986
 CanvasRenderer:
@@ -286,10 +286,10 @@ RectTransform:
   - {fileID: 2823051740394470799}
   m_Father: {fileID: 6927288131470332930}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -78, y: -10}
-  m_SizeDelta: {x: 52, y: 9}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -50}
+  m_SizeDelta: {x: 250, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7241322659368063152
 MonoBehaviour:
@@ -509,6 +509,7 @@ MonoBehaviour:
   level10Boss2ProjectilePrefab_2: {fileID: 0}
   level10Boss3ProjectilePrefab_1: {fileID: 0}
   level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
   currentHealth: 0
   healthBar: {fileID: 7383222805860125607}
   enemyProjectileClone: {fileID: 0}

@@ -11,19 +11,20 @@ using UnityEngine.SceneManagement;
 
 public class SpawnManager : MonoBehaviour
 {
+    AudioManager audioManager;
     public GameObject player;
     public GameObject projectile;
     private bool isTripleShot;
     public GameObject incomingBossText;
 
     private GameObject projectileClone;
-    [SerializeField] private float shootCooldown = .25f;
+    [SerializeField] private float shootCooldown = .5f;
     private float lastShotTime;
     public GameObject enemyPrefab;
     private GameObject enemyClone;
     public Camera mainCamera;
     public int max_Count = 10;
-    float spawnTime = 10f;
+    float spawnTime = 20f;
 
 
     public GameObject ToptoBottomPrefab;
@@ -63,6 +64,10 @@ public class SpawnManager : MonoBehaviour
     private Vector3 centerPosition;
     private Vector3 centerToCenterPostion;
 
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+    }
     private void Start()
     {
         incomingBossText.SetActive(false);
@@ -141,6 +146,7 @@ public class SpawnManager : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse0) && Time.time >= lastShotTime + shootCooldown && isTripleShot)//Time.time is how much time has been elapsed till the start of the game.
                                                                                                           //Fires 3 Projectiles if isTripleShot is set to true. 
         {
+            audioManager.PlaySFX(audioManager.trippleLasersSFX);
             projectileClone = Instantiate(projectile, new Vector3(player.transform.position.x, player.transform.position.y + 1f, 0), player.transform.rotation);
             projectileClone = Instantiate(projectile, new Vector3(player.transform.position.x + 0.50f, player.transform.position.y + .25f, 0), player.transform.rotation);
             projectileClone = Instantiate(projectile, new Vector3(player.transform.position.x - 0.50f, player.transform.position.y + .25f, 0), player.transform.rotation);
@@ -148,6 +154,36 @@ public class SpawnManager : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.Mouse0) && Time.time >= lastShotTime + shootCooldown)
         {
+
+            /*  int randnum = Random.Range(1, 7);
+              switch (randnum)
+              {
+                  case 0:
+                      audioManager.PlaySFX(audioManager.laserShootSFX1);
+                      break;
+                  case 1:
+                      audioManager.PlaySFX(audioManager.laserShootSFX2);
+                      break;
+                  case 2:
+                      audioManager.PlaySFX(audioManager.laserShootSFX3);
+                      break;
+                  case 3:
+                      audioManager.PlaySFX(audioManager.laserShootSFX4);
+                      break;
+                  case 4:
+                      audioManager.PlaySFX(audioManager.laserShootSFX5);
+                      break;
+                  case 5:
+                      audioManager.PlaySFX(audioManager.laserShootSFX6);
+                      break;
+                  default:
+                      audioManager.PlaySFX(audioManager.laserShootSFX1);
+                      break;
+
+
+              }*/
+            audioManager.PlaySFX(audioManager.laserShootSFX1);
+
             projectileClone = Instantiate(projectile, new Vector3(player.transform.position.x, player.transform.position.y + 1f, 0), player.transform.rotation);
 
             lastShotTime = Time.time;
@@ -210,6 +246,7 @@ public class SpawnManager : MonoBehaviour
 
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
         incomingBossText.SetActive(true);
+        audioManager.PlaySFX(audioManager.bossIncomingSFX);
         yield return new WaitForSeconds(4);
         incomingBossText.SetActive(false);
 
@@ -229,6 +266,8 @@ public class SpawnManager : MonoBehaviour
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
 
         incomingBossText.SetActive(true);
+        audioManager.PlaySFX(audioManager.bossIncomingSFX);
+
         yield return new WaitForSeconds(4);
         incomingBossText.SetActive(false);
         SpawnBoss(level2BossPrefab);
@@ -245,6 +284,8 @@ public class SpawnManager : MonoBehaviour
 
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
         incomingBossText.SetActive(true);
+        audioManager.PlaySFX(audioManager.bossIncomingSFX);
+
         yield return new WaitForSeconds(4);
         incomingBossText.SetActive(false);
 
@@ -262,6 +303,8 @@ public class SpawnManager : MonoBehaviour
 
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
         incomingBossText.SetActive(true);
+        audioManager.PlaySFX(audioManager.bossIncomingSFX);
+
         yield return new WaitForSeconds(4);
         incomingBossText.SetActive(false);
 
@@ -278,6 +321,8 @@ public class SpawnManager : MonoBehaviour
 
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
         incomingBossText.SetActive(true);
+        audioManager.PlaySFX(audioManager.bossIncomingSFX);
+
         yield return new WaitForSeconds(4);
         incomingBossText.SetActive(false);
 
@@ -295,6 +340,8 @@ public class SpawnManager : MonoBehaviour
 
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
         incomingBossText.SetActive(true);
+        audioManager.PlaySFX(audioManager.bossIncomingSFX);
+
         yield return new WaitForSeconds(4);
         incomingBossText.SetActive(false);
 
@@ -312,6 +359,8 @@ public class SpawnManager : MonoBehaviour
 
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
         incomingBossText.SetActive(true);
+        audioManager.PlaySFX(audioManager.bossIncomingSFX);
+
         yield return new WaitForSeconds(4);
         incomingBossText.SetActive(false);
         SpawnBoss(level7BossPrefab);
@@ -327,13 +376,25 @@ public class SpawnManager : MonoBehaviour
 
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
 
+        incomingBossText.SetActive(true);
+        audioManager.PlaySFX(audioManager.bossIncomingSFX);
+        yield return new WaitForSeconds(4);
+        incomingBossText.SetActive(false);
+
         SpawnBoss(level8BossPrefab_1);
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level8Boss_1").Length ==0);
         yield return StartCoroutine(EnemySpawner(spawnTime));
 
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
 
+        incomingBossText.SetActive(true);
+        audioManager.PlaySFX(audioManager.bossIncomingSFX);
+        yield return new WaitForSeconds(4);
+        incomingBossText.SetActive(false);
+
         SpawnBoss(level8BossPrefab_2);
+        audioManager.PlaySFX(audioManager.bossIncomingSFX);
+
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level8Boss_2").Length == 0);
         Time.timeScale = 0;
         LevelFinsihUI.SetActive(true);
@@ -345,14 +406,29 @@ public class SpawnManager : MonoBehaviour
         yield return StartCoroutine(EnemySpawner(spawnTime));
 
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
+        incomingBossText.SetActive(true);
+        audioManager.PlaySFX(audioManager.bossIncomingSFX);
+        yield return new WaitForSeconds(4);
+        incomingBossText.SetActive(false);
 
         SpawnBoss(level9BossPrefab_1);
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level9Boss_1").Length ==0);
         yield return StartCoroutine(EnemySpawner(spawnTime)); 
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
 
+
+        incomingBossText.SetActive(true);
+        audioManager.PlaySFX(audioManager.bossIncomingSFX);
+        yield return new WaitForSeconds(4);
+        incomingBossText.SetActive(false);
+
         SpawnBoss(level9BossPrefab_2);
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level9Boss_2").Length == 0);
+
+        incomingBossText.SetActive(true);
+        audioManager.PlaySFX(audioManager.bossIncomingSFX);
+        yield return new WaitForSeconds(4);
+        incomingBossText.SetActive(false);
         SpawnBoss(level9BossPrefab_3);
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level9Boss_3").Length == 0);
         Time.timeScale = 0;
@@ -366,16 +442,31 @@ public class SpawnManager : MonoBehaviour
         yield return StartCoroutine(EnemySpawner(spawnTime));
 
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
+        
+        incomingBossText.SetActive(true);
+        audioManager.PlaySFX(audioManager.bossIncomingSFX);
+        yield return new WaitForSeconds(4);
+        incomingBossText.SetActive(false);
 
         SpawnBoss(level10BossPrefab_1);
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level10Boss_1").Length ==0);
         yield return StartCoroutine(EnemySpawner(spawnTime)); 
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
 
+        incomingBossText.SetActive(true);
+        audioManager.PlaySFX(audioManager.bossIncomingSFX);
+        yield return new WaitForSeconds(4);
+        incomingBossText.SetActive(false);
+        
         SpawnBoss(level10BossPrefab_2);
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level10Boss_2").Length == 0);
         yield return StartCoroutine(EnemySpawner(spawnTime));
 
+        incomingBossText.SetActive(true);
+        audioManager.PlaySFX(audioManager.bossIncomingSFX);
+        yield return new WaitForSeconds(4);
+        incomingBossText.SetActive(false);
+        
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
         SpawnBoss(level10BossPrefab_3);
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level10Boss_3").Length == 0);
@@ -454,7 +545,7 @@ public class SpawnManager : MonoBehaviour
 
             while (Time.time < endTime)
             {
-                randomFloatTime = Random.Range(1.5f, 2f);
+                randomFloatTime = Random.Range(1f,2f);
                 yield return new WaitForSeconds(randomFloatTime);
                 SpawnRandomEnemy();
 
@@ -466,7 +557,7 @@ public class SpawnManager : MonoBehaviour
 
             while (Time.time < endTime)
             {
-                randomFloatTime = Random.Range(2f, 3f);
+                randomFloatTime = Random.Range(1f, 3f);
                 yield return new WaitForSeconds(randomFloatTime);
                 SpawnRandomEnemy();
 

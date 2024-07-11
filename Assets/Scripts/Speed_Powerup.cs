@@ -5,9 +5,12 @@ using UnityEngine;
 public class Speed_Powerup : MonoBehaviour
 {
     Player_Manager player_manager;
-   
+    AudioManager audioManager;
+
     private void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+
         player_manager = GameObject.FindObjectOfType<Player_Manager>();
 
         /*        player_manager = GameObject.FindAnyObjectByType<Player_Manager>().GetComponent<Player_Manager>();
@@ -29,7 +32,10 @@ public class Speed_Powerup : MonoBehaviour
     }
     IEnumerator SpeedPowerupCoroutine()
     {
+        audioManager.PlaySFX(audioManager.powerupPickupSFX);
         player_manager.SetMoveSpeed(player_manager.GetNewMoveSpeed());
+        audioManager.PlaySFX(audioManager.thrustersSFX);
+
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<PolygonCollider2D>().enabled = false;
         yield return new WaitForSeconds(4f);

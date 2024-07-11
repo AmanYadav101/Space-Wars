@@ -69,8 +69,8 @@ public class Player_Manager : MonoBehaviour
         if (!isDestroyed) 
         { 
         Movement();
-        TeleportPlayer(); 
-        TurnOnFire();
+/*        TeleportPlayer(); 
+*/        TurnOnFire();
         TurnOnThrusters();
         TurnOnShield();//Turns on the shield when the IsInvincible boolean gets to true in the Shield_Powerup Script
         }
@@ -130,9 +130,12 @@ public class Player_Manager : MonoBehaviour
             isMoving = false;
         }
 
+       
         if (movemeny_JoyStick.joyStickVec.y != 0 || movemeny_JoyStick.joyStickVec.x != 0)
         {
-            Vector3 move = new Vector3(movemeny_JoyStick.joyStickVec.x * moveSpeed * Time.deltaTime, movemeny_JoyStick.joyStickVec.y * moveSpeed * Time.deltaTime, 0);
+            // Apply sensitivity factor
+            Vector3 move = new Vector3(movemeny_JoyStick.joyStickVec.x * movemeny_JoyStick.sensitivity * moveSpeed * Time.deltaTime,
+                                       movemeny_JoyStick.joyStickVec.y * movemeny_JoyStick.sensitivity * moveSpeed * Time.deltaTime, 0);
             Vector3 projectedPosition = transform.position + move;
             Vector2 projectedViewportPosition = Camera.main.WorldToViewportPoint(projectedPosition);
 
@@ -143,13 +146,15 @@ public class Player_Manager : MonoBehaviour
             }
             else if (projectedViewportPosition.y < 0.1f || projectedViewportPosition.y > 0.25f)
             {
-                transform.Translate(new Vector3(movemeny_JoyStick.joyStickVec.x * moveSpeed * Time.deltaTime, 0, 0));
+                transform.Translate(new Vector3(movemeny_JoyStick.joyStickVec.x * movemeny_JoyStick.sensitivity * moveSpeed * Time.deltaTime, 0, 0));
                 isMoving = true;
             }
         }
-      
 
-
+        Vector3 clampedPosition = mainCamera.WorldToViewportPoint(transform.position);
+        clampedPosition.x = Mathf.Clamp(clampedPosition.x, 0.1f, 0.9f);
+        clampedPosition.y = Mathf.Clamp(clampedPosition.y, 0.1f, 0.25f);
+        transform.position = mainCamera.ViewportToWorldPoint(clampedPosition);
         if (!isMoving)// making the Turn parameter from the animator to 0 so that ideal animation can be played if no movement is happening.
         {
             //for making the ship back to the ideal position
@@ -195,6 +200,7 @@ public class Player_Manager : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy Laser"))
         {
             Destroy(collision.gameObject);
+            Handheld.Vibrate();
             if (isInvincible) { }
 
             else if (currentHealth > 0)//Takes Damage if health is greater than 0 and updates
@@ -231,6 +237,8 @@ public class Player_Manager : MonoBehaviour
             collision.gameObject.CompareTag("LRBoss"))
 
         {
+            Handheld.Vibrate();
+
             if (isInvincible) { return; }
             Enemy_Manager enemy = collision.gameObject.GetComponent<Enemy_Manager>();
             

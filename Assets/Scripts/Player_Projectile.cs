@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
     {
         if (!isDestroyed) 
         { 
-        transform.Translate(new Vector3(0, 10 * Time.deltaTime,0));
+        transform.Translate(new Vector3(0, 15 * Time.deltaTime,0));
         }
         else if (isDestroyed)
         {
@@ -42,8 +42,7 @@ public class Projectile : MonoBehaviour
            collision.gameObject.tag == "Level10Boss_1" || collision.gameObject.tag == "Level10Boss_2" ||
            collision.gameObject.tag == "Level10Boss_3")
         {
-            StartCoroutine(DestroyProjectile());
-
+Destroy(gameObject);
         }
     }
     private IEnumerator DestroyProjectile()

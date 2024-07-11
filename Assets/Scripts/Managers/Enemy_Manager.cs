@@ -10,6 +10,7 @@ public class Enemy_Manager : MonoBehaviour
     [SerializeField] Animator animator;
     SpawnManager spawnManager;
     PolygonCollider2D polygonCollider2D;
+    AudioManager audioManager;
     public GameObject enemy;
     public GameObject enemyProjectile;
     public GameObject bossProjectile1;
@@ -197,7 +198,8 @@ public class Enemy_Manager : MonoBehaviour
         }
     }
     private void Awake()
-    {        
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         polygonCollider2D = GetComponent<PolygonCollider2D>();
 /*        player_manager = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Manager>();
 */        /*        player_manager = GameObject.FindObjectOfType<Player_Manager>().GetComponent<Player_Manager>();
@@ -213,7 +215,9 @@ public class Enemy_Manager : MonoBehaviour
         if (animator != null)
         {
             polygonCollider2D.enabled = false;
-
+            
+            audioManager.PlaySFX(audioManager.enemyExplosion);
+          
             isDestroyed = true;
             animator.SetBool("Destroy", true);
             //Setting the collider to trigger so that the other lasers won't interact with the previous gameobject thats still being destroyed.
@@ -257,97 +261,106 @@ public class Enemy_Manager : MonoBehaviour
         {
             return;
         }
-        if (!FindObjectOfType<GameManager>().GetIsPaused() && !FindObjectOfType<Player_Manager>().GetIsDestroyed()) { 
-        
-        if (Random.Range(0f,1000)<1.5f )
+        if (!FindObjectOfType<GameManager>().GetIsPaused() && !FindObjectOfType<Player_Manager>().GetIsDestroyed()) {
+            float randNum = Random.Range(0f, 1000);
+        if (randNum<4.5f )
         {
-            if(gameObject.tag == "BossLeftToRight")
-            {
-                enemyProjectileClone = Instantiate(bossProjectile1, new Vector3(transform.position.x + .35f, transform.position.y -.8f , 0), Quaternion.identity);
-                enemyProjectileClone = Instantiate(bossProjectile1, new Vector3(transform.position.x + .6f, transform.position.y -.65f , 0), Quaternion.identity);
-                enemyProjectileClone = Instantiate(bossProjectile1, new Vector3(transform.position.x - .35f, transform.position.y -.8f , 0), Quaternion.identity);
-                enemyProjectileClone = Instantiate(bossProjectile1, new Vector3(transform.position.x - .6f, transform.position.y -.65f , 0), Quaternion.identity);
-                enemyProjectileClone = Instantiate(bossProjectile2, new Vector3(transform.position.x, transform.position.y - 2.2f, 0), Quaternion.identity);
-                enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x-1.5f, transform.position.y - .8f, 0), Quaternion.identity);
-                enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x+1.4f, transform.position.y - .8f, 0), Quaternion.identity);
-                enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x+1.5f, transform.position.y - .65f, 0), Quaternion.identity);
-                enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x-1.4f, transform.position.y - .65f, 0), Quaternion.identity);
-
-            }
-            else if(gameObject.tag == "Level2Boss")
-            {
-                enemyProjectileClone = Instantiate(level2BossProjectilePrefab, new Vector3(transform.position.x -1.25f ,transform.position.y-.1f,0), Quaternion.identity);
-            }
-            else if(gameObject.tag == "Level3Boss")
-            {
-                enemyProjectileClone = Instantiate(level3BossProjectilePrefab, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
-            }
-            else if(gameObject.tag == "Level4Boss")
-            {
-                enemyProjectileClone = Instantiate(level4BossProjectilePrefab, new Vector3(transform.position.x+.3f, transform.position.y-1.1f, 0), Quaternion.identity);
-            }
-            else if(gameObject.tag == "Level5Boss")
-            {
-                enemyProjectileClone = Instantiate(level5BossProjectilePrefab, new Vector3(transform.position.x -1.05f, transform.position.y -4.15f, 0), Quaternion.identity);
-            }
-            else if(gameObject.tag == "Level6Boss")
-            {
-                switch(Random.Range(0,2))
+                if (gameObject.tag == "BossLeftToRight")
                 {
-                    case 0: enemyProjectileClone = Instantiate(level6BossProjectilePrefab_1, new Vector3(transform.position.x -.6f , transform.position.y + .1f, 0), Quaternion.identity); break;
-                    case 1: enemyProjectileClone = Instantiate(level6BossProjectilePrefab_2, new Vector3(transform.position.x , transform.position.y - 3.15f, 0), Quaternion.identity); break;
-                }
-            }
-            else if(gameObject.tag == "Level7Boss")
-            {
-                enemyProjectileClone = Instantiate(level7BossProjectilePrefab, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
-            }
-            else if (gameObject.tag == "Level8Boss_1")
-            {
-                enemyProjectileClone = Instantiate(level8BossProjectilePrefab_1, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
-            }
-            else if(gameObject.tag == "Level8Boss_2")
-            {
-                enemyProjectileClone = Instantiate(level8BossProjectilePrefab_2, new Vector3(transform.position.x-.5f, transform.position.y-2.3f, 0), Quaternion.identity);
+                    enemyProjectileClone = Instantiate(bossProjectile1, new Vector3(transform.position.x + .35f, transform.position.y - .8f, 0), Quaternion.identity);
+                    enemyProjectileClone = Instantiate(bossProjectile1, new Vector3(transform.position.x + .6f, transform.position.y - .65f, 0), Quaternion.identity);
+                    enemyProjectileClone = Instantiate(bossProjectile1, new Vector3(transform.position.x - .35f, transform.position.y - .8f, 0), Quaternion.identity);
+                    enemyProjectileClone = Instantiate(bossProjectile1, new Vector3(transform.position.x - .6f, transform.position.y - .65f, 0), Quaternion.identity);
+                    enemyProjectileClone = Instantiate(bossProjectile2, new Vector3(transform.position.x, transform.position.y - 2.2f, 0), Quaternion.identity);
+                    enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x - 1.5f, transform.position.y - .8f, 0), Quaternion.identity);
+                    enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x + 1.4f, transform.position.y - .8f, 0), Quaternion.identity);
+                    enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x + 1.5f, transform.position.y - .65f, 0), Quaternion.identity);
+                    enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x - 1.4f, transform.position.y - .65f, 0), Quaternion.identity);
 
-            }else if (gameObject.tag == "Level9Boss_1")
-            {
-                enemyProjectileClone = Instantiate(level9BossProjectilePrefab_1, new Vector3(transform.position.x, transform.position.y-1f, 0), Quaternion.identity);
-            }
-            else if(gameObject.tag == "Level9Boss_2")
-            {
-                enemyProjectileClone = Instantiate(level9BossProjectilePrefab_2, new Vector3(transform.position.x-.45f, transform.position.y-.8f, 0), Quaternion.identity);
+                }
+                else if (gameObject.tag == "Level2Boss")
+                {
+                    enemyProjectileClone = Instantiate(level2BossProjectilePrefab, new Vector3(transform.position.x - 1.25f, transform.position.y - .1f, 0), Quaternion.identity);
+                }
+                else if (gameObject.tag == "Level3Boss")
+                {
+                    enemyProjectileClone = Instantiate(level3BossProjectilePrefab, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+                }
+                else if (gameObject.tag == "Level4Boss")
+                {
+                    enemyProjectileClone = Instantiate(level4BossProjectilePrefab, new Vector3(transform.position.x + .3f, transform.position.y - 1.1f, 0), Quaternion.identity);
+                }
+                else if (gameObject.tag == "Level5Boss")
+                {
+                    enemyProjectileClone = Instantiate(level5BossProjectilePrefab, new Vector3(transform.position.x - 1.05f, transform.position.y - 4.15f, 0), Quaternion.identity);
+                }
+                else if (gameObject.tag == "Level6Boss")
+                {
+                    switch (Random.Range(0, 2))
+                    {
+                        case 0: enemyProjectileClone = Instantiate(level6BossProjectilePrefab_1, new Vector3(transform.position.x - .6f, transform.position.y + .1f, 0), Quaternion.identity); break;
+                        case 1: enemyProjectileClone = Instantiate(level6BossProjectilePrefab_2, new Vector3(transform.position.x, transform.position.y - 3.15f, 0), Quaternion.identity); break;
+                    }
+                }
+                else if (gameObject.tag == "Level7Boss")
+                {
+                    enemyProjectileClone = Instantiate(level7BossProjectilePrefab, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+                }
+                else if (gameObject.tag == "Level8Boss_1")
+                {
+                    enemyProjectileClone = Instantiate(level8BossProjectilePrefab_1, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+                }
+                else if (gameObject.tag == "Level8Boss_2")
+                {
+                    enemyProjectileClone = Instantiate(level8BossProjectilePrefab_2, new Vector3(transform.position.x - .5f, transform.position.y - 2.3f, 0), Quaternion.identity);
 
-            }else if(gameObject.tag == "Level9Boss_3")
-            {
-                enemyProjectileClone = Instantiate(level9BossProjectilePrefab_3, new Vector3(transform.position.x-7.8f, transform.position.y - 1.65f, 0), Quaternion.identity);
+                }
+                else if (gameObject.tag == "Level9Boss_1")
+                {
+                    enemyProjectileClone = Instantiate(level9BossProjectilePrefab_1, new Vector3(transform.position.x, transform.position.y - 1f, 0), Quaternion.identity);
+                }
+                else if (gameObject.tag == "Level9Boss_2")
+                {
+                    enemyProjectileClone = Instantiate(level9BossProjectilePrefab_2, new Vector3(transform.position.x - .45f, transform.position.y - .8f, 0), Quaternion.identity);
 
-            }
-            else if (gameObject.tag == "Level10Boss_1")
-            {
-                switch (Random.Range(0, 2))
-                {
-                    case 0: enemyProjectileClone = Instantiate(level10Boss1ProjectilePrefab_1, new Vector3(transform.position.x-1.1f, transform.position.y-.2f , 0), Quaternion.identity); break;
-                    case 1: enemyProjectileClone = Instantiate(level10Boss1ProjectilePrefab_2, new Vector3(transform.position.x-1.4f, transform.position.y-1.2f, 0), Quaternion.identity); break;
                 }
-            }else if (gameObject.tag == "Level10Boss_2")
-            {
-                switch (Random.Range(0, 2))
+                else if (gameObject.tag == "Level9Boss_3")
                 {
-                    case 0: enemyProjectileClone = Instantiate(level10Boss2ProjectilePrefab_1, new Vector3(transform.position.x-0.35f , transform.position.y -0.7f, 0), Quaternion.identity); break;
-                    case 1: enemyProjectileClone = Instantiate(level10Boss2ProjectilePrefab_2, new Vector3(transform.position.x-0.1f, transform.position.y - .5f, 0), Quaternion.identity); break;
+                    enemyProjectileClone = Instantiate(level9BossProjectilePrefab_3, new Vector3(transform.position.x - 7.8f, transform.position.y - 1.65f, 0), Quaternion.identity);
+
                 }
-            }else if (gameObject.tag == "Level10Boss_3")
-            {
-                switch (Random.Range(0, 2))
+                else if (gameObject.tag == "Level10Boss_1")
                 {
-                    case 0: enemyProjectileClone = Instantiate(level10Boss3ProjectilePrefab_1, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity); break;
-                    case 1: enemyProjectileClone = Instantiate(level10Boss3ProjectilePrefab_2, new Vector3(transform.position.x, transform.position.y , 0), Quaternion.identity); break;
+                    switch (Random.Range(0, 2))
+                    {
+                        case 0: enemyProjectileClone = Instantiate(level10Boss1ProjectilePrefab_1, new Vector3(transform.position.x - 1.1f, transform.position.y - .2f, 0), Quaternion.identity); break;
+                        case 1: enemyProjectileClone = Instantiate(level10Boss1ProjectilePrefab_2, new Vector3(transform.position.x - 1.4f, transform.position.y - 1.2f, 0), Quaternion.identity); break;
+                    }
                 }
-            }
-            else { 
-            enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x, transform.position.y - .2f, 0), enemy.transform.rotation);
-            }
+                else if (gameObject.tag == "Level10Boss_2")
+                {
+                    switch (Random.Range(0, 2))
+                    {
+                        case 0: enemyProjectileClone = Instantiate(level10Boss2ProjectilePrefab_1, new Vector3(transform.position.x - 0.35f, transform.position.y - 0.7f, 0), Quaternion.identity); break;
+                        case 1: enemyProjectileClone = Instantiate(level10Boss2ProjectilePrefab_2, new Vector3(transform.position.x - 0.1f, transform.position.y - .5f, 0), Quaternion.identity); break;
+                    }
+                }
+                else if (gameObject.tag == "Level10Boss_3")
+                {
+                    switch (Random.Range(0, 2))
+                    {
+                        case 0: enemyProjectileClone = Instantiate(level10Boss3ProjectilePrefab_1, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity); break;
+                        case 1: enemyProjectileClone = Instantiate(level10Boss3ProjectilePrefab_2, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity); break;
+                    }
+                }
+                else
+                {
+                    if (randNum < 3.5f)
+                    {
+
+                        enemyProjectileClone = Instantiate(enemyProjectile, new Vector3(transform.position.x, transform.position.y - .2f, 0), enemy.transform.rotation);
+                    }
+                }
             }
         }
     }

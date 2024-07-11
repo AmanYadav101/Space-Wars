@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 
 public class Movemeny_JoyStick : MonoBehaviour
 {
-
     public GameObject joyStick;
     public GameObject joyStickBG;
     public Vector2 joyStickVec;
@@ -13,27 +12,27 @@ public class Movemeny_JoyStick : MonoBehaviour
     private Vector2 joyStickOriginalPos;
     private float joyStickradius;
 
+    // Add a sensitivity variable
+    public float sensitivity = 0.7f;
 
-
-
-    // Start is called before the first frame update
     void Start()
     {
         joyStickOriginalPos = joyStickBG.transform.position;
         joyStickradius = joyStickBG.GetComponent<RectTransform>().sizeDelta.y / 4;
     }
-    
+
     public void PointDown()
     {
         joyStick.transform.position = Input.mousePosition;
         joyStickBG.transform.position = Input.mousePosition;
         joyStickTouchPos = Input.mousePosition;
     }
-    public void Drag(BaseEventData baseEventData) 
+
+    public void Drag(BaseEventData baseEventData)
     {
         PointerEventData pointerEventData = baseEventData as PointerEventData;
         Vector2 dragPos = pointerEventData.position;
-        joyStickVec = (dragPos-joyStickTouchPos).normalized;
+        joyStickVec = (dragPos - joyStickTouchPos).normalized;
 
         float joyStickDist = Vector2.Distance(dragPos, joyStickTouchPos);
         if (joyStickDist < joyStickradius)
@@ -50,6 +49,6 @@ public class Movemeny_JoyStick : MonoBehaviour
     {
         joyStickVec = Vector2.zero;
         joyStick.transform.position = joyStickOriginalPos;
-        joyStickBG.transform.position= joyStickOriginalPos;
+        joyStickBG.transform.position = joyStickOriginalPos;
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Shield_PowerUp : MonoBehaviour
 {
+    AudioManager audioManager;
      Player_Manager player_manager;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,8 @@ public class Shield_PowerUp : MonoBehaviour
 
     private void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+
     }
 
 
@@ -33,7 +36,7 @@ public class Shield_PowerUp : MonoBehaviour
     }
     IEnumerator ShieldPowerUpCoroutine()//CoRoutine for setting the isInvincible bool in the player_manager to true and false after a couple of secs and destroy it afterwards.
     {
-
+        audioManager.PlaySFX(audioManager.powerupPickupSFX);
         player_manager.SetIsInvincible(true);
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<PolygonCollider2D>().enabled = false;//these are for turning off the sprites of the powerup Icons.
