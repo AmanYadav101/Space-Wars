@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Authentication.ExtendedProtection;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -13,7 +14,6 @@ public class Enemy_Manager : MonoBehaviour
     public GameObject enemyProjectile;
     public GameObject bossProjectile1;
     public GameObject bossProjectile2;
-
     public GameObject level2BossProjectilePrefab;
     public GameObject level3BossProjectilePrefab;
     public GameObject level4BossProjectilePrefab;
@@ -34,7 +34,7 @@ public class Enemy_Manager : MonoBehaviour
     public GameObject level10Boss3ProjectilePrefab_2;
 
 
-    private int bossMaxHealth = 1000;
+    public int bossMaxHealth = 1000;
     public int currentHealth;
     public Health_Bar healthBar;
     
@@ -62,6 +62,7 @@ public class Enemy_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isDestroyed = false;
         bossCurrentHealth = bossMaxHealth;
         if (healthBar != null) { 
         healthBar.SetMaxHealth(bossCurrentHealth);
@@ -79,40 +80,33 @@ public class Enemy_Manager : MonoBehaviour
             EnemyBehaviour();
             EnemyFireProjectile();
 
-           /* Debug.Log(canShoot);
-            if (canShoot) {
-                Debug.Log("Inside ifCanShoot");
-
-            }*/
-
         }
         else if (isDestroyed) 
         {
-            gameObject.transform.Translate(Vector3.down * moveSpeed * Time.deltaTime/1.5f);
+            gameObject.transform.Translate(Vector3.down * moveSpeed * Time.deltaTime / 1.5f);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (gameObject.tag == "BossLeftToRight" || gameObject.tag == "Level2Boss" ||
-            gameObject.tag == "Level3Boss" || gameObject.tag == "Level4Boss" ||
-            gameObject.tag == "Level5Boss" || gameObject.tag == "Level6Boss" ||
-            gameObject.tag == "Level7Boss"|| gameObject.tag == "Level8Boss_1" ||
-            gameObject.tag == "Level8Boss_2" || gameObject.tag == "Level9Boss_1" || 
-            gameObject.tag == "Level9Boss_2" || gameObject.tag == "Level9Boss_3" ||
-            gameObject.tag == "Level10Boss_1" || gameObject.tag == "Level10Boss_2" ||
-            gameObject.tag == "Level10Boss_3") 
+        if (isDestroyed)
         {
-            Debug.Log(bossCurrentHealth);
-            if (collision.gameObject.tag == "Laser")
+            return;
+        }
+        else
+        {
+            if (gameObject.tag == "BossLeftToRight" && collision.gameObject.tag == "Laser")
             {
+
                 Destroy(collision.gameObject);
                 if (bossCurrentHealth > 0)
                 {
                     bossCurrentHealth -= 50;
                     healthBar.SetHealth(bossCurrentHealth);
+
                     if (bossCurrentHealth <= 0)
                     {
+
                         StartCoroutine(DestroyEnemy());
                     }
                 }
@@ -120,53 +114,87 @@ public class Enemy_Manager : MonoBehaviour
                 {
                     StartCoroutine(DestroyEnemy());
                 }
+
+
+            }
+
+            if (gameObject.tag == "BossLeftToRight" || gameObject.tag == "Level2Boss" ||
+                gameObject.tag == "Level3Boss" || gameObject.tag == "Level4Boss" ||
+                gameObject.tag == "Level5Boss" || gameObject.tag == "Level6Boss" ||
+                gameObject.tag == "Level7Boss" || gameObject.tag == "Level8Boss_1" ||
+                gameObject.tag == "Level8Boss_2" || gameObject.tag == "Level9Boss_1" ||
+                gameObject.tag == "Level9Boss_2" || gameObject.tag == "Level9Boss_3" ||
+                gameObject.tag == "Level10Boss_1" || gameObject.tag == "Level10Boss_2" ||
+                gameObject.tag == "Level10Boss_3")
+            {
+                Debug.Log(bossCurrentHealth);
+                if (collision.gameObject.tag == "Laser")
+                {
+                    Destroy(collision.gameObject);
+                    Debug.Log("Laser Destroyed");
+                    if (bossCurrentHealth > 0)
+                    {
+                        bossCurrentHealth -= 50;
+                        healthBar.SetHealth(bossCurrentHealth);
+                        if (bossCurrentHealth <= 0)
+                        {
+                            StartCoroutine(DestroyEnemy());
+                        }
+                    }
+                    else if (bossCurrentHealth <= 0)
+                    {
+                        StartCoroutine(DestroyEnemy());
+                    }
+                }
+                if (collision.gameObject.tag == "Player")
+                {
+                    StartCoroutine(player_manager.DestroyPlayer());
+                }
+
             }
 
 
-        }
-        else if ((gameObject.tag == "ToptoBottom" ||
-                gameObject.tag == "LefttoRight" ||
-                gameObject.tag == "LRBoss" ||
-                gameObject.tag == "NewLefttoRight" ||
-                gameObject.tag == "RighttoLeft" ||
-                gameObject.tag == "LefttoRightLoop") &&
-                collision.gameObject.tag == "Laser")
-        {
-            Destroy(collision.gameObject);//Destroys the laser that hit the enemy
-            StartCoroutine(DestroyEnemy());
-        }
-        /*if (collision.gameObject.tag == "Laser")
-       {
-           Destroy(collision.gameObject);//Destroys the laser that hit the enemy
-           StartCoroutine(DestroyEnemy());
-       }*/
-        if (collision.gameObject.tag == "Boundry")
-        {
-            StartCoroutine(DestroyEnemy());
-        }
-        if ((gameObject.tag == "ToptoBottom" ||
-                gameObject.tag == "LefttoRight" ||
-                gameObject.tag == "LRBoss" ||
-                gameObject.tag == "NewLefttoRight" ||
-                gameObject.tag == "RighttoLeft" ||
-                gameObject.tag == "LefttoRightLoop") && collision.gameObject.tag == "Shield") 
-        {
-            StartCoroutine(DestroyEnemy());
 
+            else if ((gameObject.tag == "ToptoBottom" ||
+                    gameObject.tag == "LefttoRight" ||
+                    gameObject.tag == "LRBoss" ||
+                    gameObject.tag == "NewLefttoRight" ||
+                    gameObject.tag == "RighttoLeft" ||
+                    gameObject.tag == "LefttoRightLoop") &&
+                    collision.gameObject.tag == "Laser")
+            {
+                Destroy(collision.gameObject);//Destroys the laser that hit the enemy
+                StartCoroutine(DestroyEnemy());
+            }
+            
+            if (collision.gameObject.tag == "Boundry")
+            {
+                StartCoroutine(DestroyEnemy());
+            }
+            if ((gameObject.tag == "ToptoBottom" ||
+                    gameObject.tag == "LefttoRight" ||
+                    gameObject.tag == "LRBoss" ||
+                    gameObject.tag == "NewLefttoRight" ||
+                    gameObject.tag == "RighttoLeft" ||
+                    gameObject.tag == "LefttoRightLoop") &&
+                    collision.gameObject.tag == "Shield")
+            {
+                StartCoroutine(DestroyEnemy());
+
+            }
+
+            if ((gameObject.tag == "ToptoBottom" ||
+                    gameObject.tag == "LefttoRight" ||
+                    gameObject.tag == "LRBoss" ||
+                    gameObject.tag == "NewLefttoRight" ||
+                    gameObject.tag == "RighttoLeft" ||
+                    gameObject.tag == "LefttoRightLoop") &&
+                    collision.gameObject.tag == "Player")
+
+            {
+                StartCoroutine(DestroyEnemy());
+            }
         }
-
-        /*if ((gameObject.tag == "ToptoBottom" ||
-                gameObject.tag == "LefttoRight" ||
-                gameObject.tag == "LRBoss" ||
-                gameObject.tag == "NewLefttoRight" ||
-                gameObject.tag == "RighttoLeft" ||
-                gameObject.tag == "LefttoRightLoop") && 
-                collision.gameObject.tag == "Player")
-
-        {
-            StartCoroutine(DestroyEnemy());
-        }*/
-
     }
     private void Awake()
     {        
@@ -176,81 +204,6 @@ public class Enemy_Manager : MonoBehaviour
         */
         spawnManager = GameObject.FindFirstObjectByType<SpawnManager>().GetComponent<SpawnManager>();
     }      
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        /*        if (gameObject.tag == "BossLeftToRight" && collision.gameObject.tag == "Laser")
-                {
-
-                    Destroy(collision.gameObject);
-                     if (bossCurrentHealth > 0)
-                     {
-                     bossCurrentHealth -= 50;
-                         if (bossCurrentHealth <= 0)
-                         {
-                             StartCoroutine(DestroyEnemy());
-                         }
-                     }
-                     else if (bossCurrentHealth <= 0)
-                     {
-                         StartCoroutine(DestroyEnemy());
-                     }
-
-
-                }*/
-
-        if (gameObject.tag == "BossLeftToRight" || gameObject.tag == "Level2Boss"||
-            gameObject.tag == "Level3Boss" || gameObject.tag == "Level4Boss" ||
-            gameObject.tag == "Level5Boss" || gameObject.tag == "Level6Boss" ||
-            gameObject.tag == "Level7Boss" || gameObject.tag == "Level8Boss_1" ||
-            gameObject.tag == "Level8Boss_2" || gameObject.tag == "Level9Boss_1" ||
-            gameObject.tag == "Level9Boss_2" || gameObject.tag == "Level9Boss_3" ||
-            gameObject.tag == "Level10Boss_1" || gameObject.tag == "Level10Boss_2" ||
-            gameObject.tag == "Level10Boss_3")
-        {
-            if(collision.gameObject.tag == "Laser") 
-            { 
-                Destroy(collision.gameObject);
-                if (bossCurrentHealth > 0)
-                {
-                    bossCurrentHealth -= 50;
-                    if (bossCurrentHealth <= 0)
-                    {
-                        StartCoroutine(DestroyEnemy());
-                    }
-                }
-                else if (bossCurrentHealth <= 0)
-                {
-                    StartCoroutine(DestroyEnemy());
-                }
-            }
-
-            if(collision.gameObject.tag == "Player")
-            {
-                StartCoroutine(player_manager.DestroyPlayer());            }
-        }
-        else if ((gameObject.tag == "ToptoBottom" ||
-                gameObject.tag == "LefttoRight" ||
-                gameObject.tag == "LRBoss" ||
-                gameObject.tag == "NewLefttoRight" ||
-                gameObject.tag == "RighttoLeft" ||
-                gameObject.tag == "LefttoRightLoop" )&&
-                collision.gameObject.tag == "Laser")
-        {
-            Destroy(collision.gameObject);//Destroys the laser that hit the enemy
-            StartCoroutine(DestroyEnemy());
-        }
-        if ((gameObject.tag == "ToptoBottom" ||
-                gameObject.tag == "LefttoRight" ||
-                gameObject.tag == "LRBoss" ||
-                gameObject.tag == "NewLefttoRight" ||
-                gameObject.tag == "RighttoLeft" ||
-                gameObject.tag == "LefttoRightLoop") && 
-                collision.gameObject.tag == "Player"  )
-        {
-                StartCoroutine(DestroyEnemy());
-        }
-        
-    }
     
 
     
@@ -259,12 +212,15 @@ public class Enemy_Manager : MonoBehaviour
     {
         if (animator != null)
         {
+            polygonCollider2D.enabled = false;
+
             isDestroyed = true;
             animator.SetBool("Destroy", true);
-            polygonCollider2D.isTrigger = true;//Setting the collider to trigger so that the other lasers won't interact with the previous gameobject thats still being destroyed.
+            //Setting the collider to trigger so that the other lasers won't interact with the previous gameobject thats still being destroyed.
+            //Debug.Log("Enemy collider: " + polygonCollider2D.isTrigger);
             DropPowerUp();
 
-            yield return new WaitForSeconds(destroyTime);
+            yield return new WaitForSeconds(2.63f);
             Destroy(gameObject);
         }
 
@@ -619,5 +575,10 @@ public class Enemy_Manager : MonoBehaviour
 
         }
         transform.position = position;
+    }
+    public bool GetIsDestroyed()
+    {
+
+        return isDestroyed;
     }
 }

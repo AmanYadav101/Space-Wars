@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Enemy_Projectile : MonoBehaviour
 {
-/*    public Player_Manager player_Manager;
-       public Health_Bar health_bar;
-*/    // Start is called before the first frame update
+
+    /*    public Player_Manager player_Manager;
+           public Health_Bar health_bar;
+    */    // Start is called before the first frame update
     void Start()
     {
         
@@ -29,6 +30,7 @@ public class Enemy_Projectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+       
         /*if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
@@ -44,4 +46,5 @@ public class Enemy_Projectile : MonoBehaviour
         }*/
     }
     
+
 }

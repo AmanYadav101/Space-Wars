@@ -304,7 +304,7 @@ MonoBehaviour:
   level10Boss3ProjectilePrefab_1: {fileID: 6452135490026210419, guid: b788a19e58b5e21469f7687bf5f94426, type: 3}
   level10Boss3ProjectilePrefab_2: {fileID: 790855268869420582, guid: 3e574b4271b1c7f4b8045091aac43ab3, type: 3}
   currentHealth: 0
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 4314533074284868652}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}

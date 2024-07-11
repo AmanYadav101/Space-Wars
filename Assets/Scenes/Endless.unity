@@ -598,6 +598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 358522108}
   projectile: {fileID: 5555599234428668953, guid: 436c83989a236864e8dc87e776f82732, type: 3}
+  incomingBossText: {fileID: 7651855637428399582, guid: 82c2a340e12ebed4c896c8cabcacb5c5, type: 3}
   shootCooldown: 0.5
   enemyPrefab: {fileID: 8313321182695970449, guid: d3ceab726c0c2ad48bb39cf22d952704, type: 3}
   mainCamera: {fileID: 0}

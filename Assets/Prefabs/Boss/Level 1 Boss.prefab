@@ -455,6 +455,7 @@ MonoBehaviour:
   level10Boss2ProjectilePrefab_2: {fileID: 0}
   level10Boss3ProjectilePrefab_1: {fileID: 0}
   level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
   currentHealth: 0
   healthBar: {fileID: 8698336795079767630}
   enemyProjectileClone: {fileID: 0}
@@ -565,17 +566,17 @@ RectTransform:
   m_GameObject: {fileID: 3560563941896953621}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.62, y: 1.2576157, z: 2.62}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4761181486112424287}
   - {fileID: 3141046799660037583}
   m_Father: {fileID: 4653886289514137671}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -78, y: -10}
-  m_SizeDelta: {x: 52, y: 9}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -106}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3860994367612034555
 MonoBehaviour:

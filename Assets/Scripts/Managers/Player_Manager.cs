@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.EventSystems;
 using UnityEngine;
 
 public class Player_Manager : MonoBehaviour
@@ -12,6 +10,10 @@ public class Player_Manager : MonoBehaviour
     private int moveSpeed = 5;
     private int normalSpeed;
     private int newSpeed = 10;
+
+
+     Movemeny_JoyStick movemeny_JoyStick;
+    private Rigidbody2D rb;
     //Fire Objects
     public Animator FireAnimator;
     public GameObject leftWingFire;
@@ -28,11 +30,16 @@ public class Player_Manager : MonoBehaviour
      PolygonCollider2D polygonCollider2D;
     bool isMoving = false;
     public GameObject PlayerDeadUI;
-    
     private bool isDestroyed = false;
 
     bool isMoveingLeft = false;
     bool isMoveingRight = false;
+
+
+    private Vector2 startTouchPosition;
+    private Vector2 currentTouchPosition;
+    private bool isSwiping = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,9 +58,9 @@ public class Player_Manager : MonoBehaviour
 
     private void Awake()
     {
-
-        polygonCollider2D = gameObject.GetComponent<PolygonCollider2D>();
-
+        movemeny_JoyStick = GameObject.FindObjectOfType<Movemeny_JoyStick>();
+            rb = GetComponent<Rigidbody2D>();
+            polygonCollider2D = gameObject.GetComponent<PolygonCollider2D>();
     }
 
     // Update is called once per frame
@@ -122,6 +129,27 @@ public class Player_Manager : MonoBehaviour
         else {
             isMoving = false;
         }
+
+        if (movemeny_JoyStick.joyStickVec.y != 0 || movemeny_JoyStick.joyStickVec.x != 0)
+        {
+            Vector3 move = new Vector3(movemeny_JoyStick.joyStickVec.x * moveSpeed * Time.deltaTime, movemeny_JoyStick.joyStickVec.y * moveSpeed * Time.deltaTime, 0);
+            Vector3 projectedPosition = transform.position + move;
+            Vector2 projectedViewportPosition = Camera.main.WorldToViewportPoint(projectedPosition);
+
+            if (projectedViewportPosition.y >= 0.1f && projectedViewportPosition.y <= 0.25f)
+            {
+                transform.Translate(move);
+                isMoving = true;
+            }
+            else if (projectedViewportPosition.y < 0.1f || projectedViewportPosition.y > 0.25f)
+            {
+                transform.Translate(new Vector3(movemeny_JoyStick.joyStickVec.x * moveSpeed * Time.deltaTime, 0, 0));
+                isMoving = true;
+            }
+        }
+      
+
+
         if (!isMoving)// making the Turn parameter from the animator to 0 so that ideal animation can be played if no movement is happening.
         {
             //for making the ship back to the ideal position
@@ -140,20 +168,18 @@ public class Player_Manager : MonoBehaviour
         }
 
     }
-
-
     private void TeleportPlayer()
     {
         Vector2 position = transform.position;
         // world is (-infinity , -infinity) to (+infinity, +infinity)
         //viewport is the area covered by the camera. (0,0) for bottom left and (1,1) for top right corner
         Vector2 viewportPosition = mainCamera.WorldToViewportPoint(position);
-        if(viewportPosition.x > .99f)
+        if(viewportPosition.x > .95f)
         {
-            position.x = mainCamera.ViewportToWorldPoint(new Vector2(0.1f, viewportPosition.y)).x;
+            position.x = mainCamera.ViewportToWorldPoint(new Vector2(0.05f, viewportPosition.y)).x;
         }
-        else if(viewportPosition.x<0.1f){
-            position.x = mainCamera.ViewportToWorldPoint(new Vector2(.99f, viewportPosition.y)).x;
+        else if(viewportPosition.x<0.05f){
+            position.x = mainCamera.ViewportToWorldPoint(new Vector2(.95f, viewportPosition.y)).x;
 
         }
         transform.position = position;
@@ -163,6 +189,8 @@ public class Player_Manager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
+        
+            Debug.Log("Name of Object Colliding with player : " + collision.gameObject.name);
 
         if (collision.gameObject.CompareTag("Enemy Laser"))
         {
@@ -171,62 +199,66 @@ public class Player_Manager : MonoBehaviour
 
             else if (currentHealth > 0)//Takes Damage if health is greater than 0 and updates
                                        //the health bar based on the health.
-             {   
+            {
                 currentHealth -= 20;
                 healthBar.SetHealth(currentHealth);
 
                 if (currentHealth <= 0)//if statement inside this else if so that we check if the current health is 0 or less then 0
                                        //or else the player will still be alive at 0 health until next projectile hits it.
-                    {
-                    StartCoroutine(DestroyPlayer());
-                }
-
-            }
-            else if (currentHealth <= 0)
-            {
-                StartCoroutine(DestroyPlayer());
-            }
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("Collision Entered");
-
-        if (collision.gameObject.tag == "BossLeftToRight")
-        {
-            
-            Debug.Log("Collided with BossLeftToRight");
-            currentHealth = 0;
-            StartCoroutine(DestroyPlayer());
-            
-        }
-        else if (collision.gameObject.CompareTag("Enemy") || 
-            collision.gameObject.CompareTag("LefttoRight") || 
-            collision.gameObject.CompareTag("RighttoLeft") || 
-            collision.gameObject.CompareTag("LefttoRightLoop") || 
-            collision.gameObject.CompareTag("ToptoBottom")||
-            collision.gameObject.CompareTag("LRBoss"))
-        {
-            Debug.Log("Health:-" + currentHealth);
-            if (currentHealth > 0)
-            {
-                Debug.Log("Health greater than zero:-" + currentHealth);
-
-                currentHealth -= 40;
-                healthBar.SetHealth(currentHealth);
-                if (currentHealth <= 0)
                 {
                     StartCoroutine(DestroyPlayer());
                 }
+
             }
             else if (currentHealth <= 0)
             {
                 StartCoroutine(DestroyPlayer());
             }
         }
+        /* if (collision.gameObject.tag == "BossLeftToRight")
+        {
+
+            Debug.Log("Collided with BossLeftToRight");
+            currentHealth = 0;
+            StartCoroutine(DestroyPlayer());
+
+        }*/
+        else if (collision.gameObject.CompareTag("Enemy") ||
+            collision.gameObject.CompareTag("LefttoRight") ||
+            collision.gameObject.CompareTag("RighttoLeft") ||
+            collision.gameObject.CompareTag("LefttoRightLoop") ||
+            collision.gameObject.CompareTag("ToptoBottom") ||
+            collision.gameObject.CompareTag("LRBoss"))
+
+        {
+            if (isInvincible) { return; }
+            Enemy_Manager enemy = collision.gameObject.GetComponent<Enemy_Manager>();
+            
+            Debug.Log("Enemy Destroyed?: " + enemy.GetIsDestroyed());
+            if (enemy != null && enemy.GetIsDestroyed()){
+       
+                Debug.Log("Inside if");
+                if (currentHealth > 0)
+                {
+
+
+                    currentHealth -= 40;
+                    healthBar.SetHealth(currentHealth);
+                    if (currentHealth <= 0)
+                    {
+                        StartCoroutine(DestroyPlayer());
+                    }
+                }
+                else if (currentHealth <= 0)
+                {
+                    StartCoroutine(DestroyPlayer());
+                }
+
+            } }
         
+
     }
+
 
     public IEnumerator DestroyPlayer()
     {
@@ -235,7 +267,7 @@ public class Player_Manager : MonoBehaviour
         rightWingFire.SetActive(false);
         middleFire.SetActive(false);
         animator.SetBool("Destroy", true);
-        polygonCollider2D.isTrigger = true;
+        polygonCollider2D.isTrigger = false;
 
 
         yield return new WaitForSeconds(2.63f);
@@ -353,6 +385,15 @@ public class Player_Manager : MonoBehaviour
     {
         return isDestroyed;
     }
+    /*public void SetCanTakeDamage(bool canTake)
+    {
+        canTakeDamage = canTake;
+    }
+
+    public bool GetCanTakeDamage()
+    {
+        return canTakeDamage;
+    }*/
 }
 
 

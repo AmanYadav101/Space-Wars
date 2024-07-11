@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq.Expressions;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-using DG.Tweening;
 using UnityEngine.SceneManagement;
 
 
@@ -14,6 +14,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject player;
     public GameObject projectile;
     private bool isTripleShot;
+    public GameObject incomingBossText;
 
     private GameObject projectileClone;
     [SerializeField] private float shootCooldown = .25f;
@@ -64,6 +65,8 @@ public class SpawnManager : MonoBehaviour
 
     private void Start()
     {
+        incomingBossText.SetActive(false);
+
         LevelFinsihUI.SetActive(false);
         Time.timeScale = 1;
         lastShotTime = -shootCooldown; //lastShotTime = -shootCooldown so that the player is able to shoot the projectile at 0 secs.
@@ -135,7 +138,7 @@ public class SpawnManager : MonoBehaviour
     {
 
         // if player is available the proceed
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time >= lastShotTime + shootCooldown && isTripleShot)//Time.time is how much time has been elapsed till the start of the game.
+        if (Input.GetKey(KeyCode.Mouse0) && Time.time >= lastShotTime + shootCooldown && isTripleShot)//Time.time is how much time has been elapsed till the start of the game.
                                                                                                           //Fires 3 Projectiles if isTripleShot is set to true. 
         {
             projectileClone = Instantiate(projectile, new Vector3(player.transform.position.x, player.transform.position.y + 1f, 0), player.transform.rotation);
@@ -143,7 +146,7 @@ public class SpawnManager : MonoBehaviour
             projectileClone = Instantiate(projectile, new Vector3(player.transform.position.x - 0.50f, player.transform.position.y + .25f, 0), player.transform.rotation);
             lastShotTime = Time.time;
         }
-        else if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time >= lastShotTime + shootCooldown)
+        else if (Input.GetKey(KeyCode.Mouse0) && Time.time >= lastShotTime + shootCooldown)
         {
             projectileClone = Instantiate(projectile, new Vector3(player.transform.position.x, player.transform.position.y + 1f, 0), player.transform.rotation);
 
@@ -206,6 +209,10 @@ public class SpawnManager : MonoBehaviour
         yield return StartCoroutine(EnemySpawner(spawnTime));
 
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
+        incomingBossText.SetActive(true);
+        yield return new WaitForSeconds(4);
+        incomingBossText.SetActive(false);
+
 
         SpawnBoss(level1BossPrefab);
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("BossLeftToRight").Length == 0);
@@ -221,7 +228,9 @@ public class SpawnManager : MonoBehaviour
 
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
 
-
+        incomingBossText.SetActive(true);
+        yield return new WaitForSeconds(4);
+        incomingBossText.SetActive(false);
         SpawnBoss(level2BossPrefab);
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level2Boss").Length == 0);
         Time.timeScale = 0;
@@ -235,7 +244,9 @@ public class SpawnManager : MonoBehaviour
         yield return StartCoroutine(EnemySpawner(spawnTime));
 
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
-
+        incomingBossText.SetActive(true);
+        yield return new WaitForSeconds(4);
+        incomingBossText.SetActive(false);
 
         SpawnBoss(level3BossPrefab);
         yield return new WaitUntil(()=> GameObject.FindGameObjectsWithTag("Level3Boss").Length==0);
@@ -250,7 +261,9 @@ public class SpawnManager : MonoBehaviour
         yield return StartCoroutine(EnemySpawner(spawnTime));
 
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
-
+        incomingBossText.SetActive(true);
+        yield return new WaitForSeconds(4);
+        incomingBossText.SetActive(false);
 
         SpawnBoss(level4BossPrefab);
         yield return new WaitUntil(()=> GameObject.FindGameObjectsWithTag("Level4Boss").Length==0) ;
@@ -264,7 +277,9 @@ public class SpawnManager : MonoBehaviour
         yield return StartCoroutine(EnemySpawner(spawnTime));
 
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
-
+        incomingBossText.SetActive(true);
+        yield return new WaitForSeconds(4);
+        incomingBossText.SetActive(false);
 
         SpawnBoss(level5BossPrefab);
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level5Boss").Length == 0);
@@ -279,7 +294,9 @@ public class SpawnManager : MonoBehaviour
         yield return StartCoroutine(EnemySpawner(spawnTime));
 
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
-
+        incomingBossText.SetActive(true);
+        yield return new WaitForSeconds(4);
+        incomingBossText.SetActive(false);
 
         SpawnBoss(level6BossPrefab);
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level6Boss").Length == 0);
@@ -294,7 +311,9 @@ public class SpawnManager : MonoBehaviour
         yield return StartCoroutine(EnemySpawner(spawnTime));
 
         yield return StartCoroutine(WaitUntilEnemiesAreDestroyed());
-
+        incomingBossText.SetActive(true);
+        yield return new WaitForSeconds(4);
+        incomingBossText.SetActive(false);
         SpawnBoss(level7BossPrefab);
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Level7Boss").Length == 0);
         Time.timeScale = 0;

@@ -236,7 +236,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &4252222809064929106
 Animator:
   serializedVersion: 5
@@ -281,6 +281,21 @@ MonoBehaviour:
   level5BossProjectilePrefab: {fileID: 0}
   level6BossProjectilePrefab_1: {fileID: 0}
   level6BossProjectilePrefab_2: {fileID: 0}
+  level7BossProjectilePrefab: {fileID: 0}
+  level8BossProjectilePrefab_1: {fileID: 0}
+  level8BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_1: {fileID: 0}
+  level9BossProjectilePrefab_2: {fileID: 0}
+  level9BossProjectilePrefab_3: {fileID: 0}
+  level10Boss1ProjectilePrefab_1: {fileID: 0}
+  level10Boss1ProjectilePrefab_2: {fileID: 0}
+  level10Boss2ProjectilePrefab_1: {fileID: 0}
+  level10Boss2ProjectilePrefab_2: {fileID: 0}
+  level10Boss3ProjectilePrefab_1: {fileID: 0}
+  level10Boss3ProjectilePrefab_2: {fileID: 0}
+  bossMaxHealth: 1000
+  currentHealth: 0
+  healthBar: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
