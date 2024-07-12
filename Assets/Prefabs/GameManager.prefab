@@ -451,10 +451,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7977114725411123304}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 346, y: -1102}
-  m_SizeDelta: {x: 500, y: 500}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 500}
+  m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2401159617523331831
 CanvasRenderer:
@@ -2993,6 +2993,7 @@ MonoBehaviour:
   joyStick: {fileID: 7061750151993663079}
   joyStickBG: {fileID: 1339783025610386148}
   joyStickVec: {x: 0, y: 0}
+  sensitivity: 0.7
 --- !u!1 &6824463626100370183
 GameObject:
   m_ObjectHideFlags: 0
@@ -3292,10 +3293,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7977114725411123304}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 346, y: -1102}
-  m_SizeDelta: {x: 250, y: 250}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 500}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4725567290279591834
 CanvasRenderer:
@@ -3426,7 +3427,7 @@ GameObject:
   - component: {fileID: 1119256707143392893}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3460,6 +3461,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 376379381419922677}
+  scoreText: {fileID: 0}
+  totaScoreText: {fileID: 0}
+  highScoreText: {fileID: 0}
+  DeadMenuHighScore: {fileID: 0}
 --- !u!1 &8085283506866791607
 GameObject:
   m_ObjectHideFlags: 0

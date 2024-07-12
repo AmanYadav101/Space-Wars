@@ -40,14 +40,16 @@ public class Enemy_Manager : MonoBehaviour
     public int bossMaxHealth = 1000;
     public int currentHealth;
     public Health_Bar healthBar;
-    
+    public GameManager gameManager;
     
     public GameObject enemyProjectileClone;
     public GameObject speedUpPowerUpPrefab;
     public GameObject shieldPowerUpPrefab;
     public GameObject tripleShotPowerUpPrefab;
+    public GameObject healthPowerUpPrefab;
 
-    
+
+
     public float moveSpeed = 2f;
     public Player_Manager player_manager;
 
@@ -63,12 +65,14 @@ public class Enemy_Manager : MonoBehaviour
     private float nextFireTime; // Timer for non-boss enemies
 
 
-    static int score = 0;
-
+    public static int score = 0;
+    public static int highScore = 0;
+    int totalScore = 0;
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(score);
+        gameManager.HighScoreText();
+
         isDestroyed = false;
         bossCurrentHealth = bossMaxHealth;
         if (healthBar != null)
@@ -76,7 +80,10 @@ public class Enemy_Manager : MonoBehaviour
             healthBar.SetMaxHealth(bossCurrentHealth);
         }
         mainCamera = Camera.main;
+        Debug.Log("Health: " + player_manager.currentHealth);
 
+
+        //highScore = PlayerPrefs.GetInt("HighScore", 0);
 
 
 
@@ -88,7 +95,20 @@ public class Enemy_Manager : MonoBehaviour
         }
 
     }
+    private void Awake()
+    {
 
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        polygonCollider2D = GetComponent<PolygonCollider2D>();
+        if (player_manager != null)
+        {
+            player_manager = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Manager>();
+        }
+        /*        player_manager = GameObject.FindObjectOfType<Player_Manager>().GetComponent<Player_Manager>();
+        */
+        spawnManager = GameObject.FindFirstObjectByType<SpawnManager>().GetComponent<SpawnManager>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -105,6 +125,18 @@ public class Enemy_Manager : MonoBehaviour
         {
             gameObject.transform.Translate(Vector3.down * moveSpeed * Time.deltaTime / 1.5f);
         }
+
+        gameManager.UpdateScoreText(score);
+        if (score > PlayerPrefs.GetInt("HighScore",0))
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+            gameManager.UpdateHighScoreText(score);
+        }
+      /*  else
+        {
+            gameManager.HighScoreText();
+        }*/
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -182,7 +214,6 @@ public class Enemy_Manager : MonoBehaviour
                     collision.gameObject.tag == "Laser")
             {
                 score += 1;
-                Debug.Log(score);
                 Destroy(collision.gameObject);//Destroys the laser that hit the enemy
                 StartCoroutine(DestroyEnemy());
             }
@@ -190,8 +221,6 @@ public class Enemy_Manager : MonoBehaviour
             if (collision.gameObject.tag == "Boundry")
             {
                 score -= 1;
-                Debug.Log(score);
-
                 StartCoroutine(DestroyEnemy());
             }
             if ((gameObject.tag == "ToptoBottom" ||
@@ -203,7 +232,6 @@ public class Enemy_Manager : MonoBehaviour
                     collision.gameObject.tag == "Shield")
             {
                 score += 1;
-                Debug.Log(score);
 
                 StartCoroutine(DestroyEnemy());
 
@@ -221,19 +249,12 @@ public class Enemy_Manager : MonoBehaviour
                 StartCoroutine(DestroyEnemy());
             }
         }
-    }
-    private void Awake()
-    {
-        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
-        polygonCollider2D = GetComponent<PolygonCollider2D>();
-/*        player_manager = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Manager>();
-*/        /*        player_manager = GameObject.FindObjectOfType<Player_Manager>().GetComponent<Player_Manager>();
-        */
-        spawnManager = GameObject.FindFirstObjectByType<SpawnManager>().GetComponent<SpawnManager>();
-    }      
-    
 
-    
+    }
+
+
+
+
     public IEnumerator DestroyEnemy()//Coroutine for playing the animation of the destroying the enemy before it gets destroyed.
                                      //"destroyTime" is the length of the clip named "Enemy_Destroyed from the animator"
     {
@@ -422,10 +443,10 @@ public class Enemy_Manager : MonoBehaviour
     void DropPowerUp()//enemies when destroyed will have a chance to drop a powerup
     {
         float randomValue = Random.Range(0f, 1f);//Chance to drop a powerup
-         
+        Debug.Log(randomValue);
         if (randomValue <= dropChance)
         {
-            int randomValueForWhichPowerUpToDrop = Random.Range(0, 3);//Chance for which powerup to drop
+            int randomValueForWhichPowerUpToDrop = Random.Range(0, 4);//Chance for which powerup to drop
             if (randomValueForWhichPowerUpToDrop == 0)
             {
                 Instantiate(speedUpPowerUpPrefab, gameObject.transform.position, gameObject.transform.rotation);
@@ -437,6 +458,15 @@ public class Enemy_Manager : MonoBehaviour
             else if (randomValueForWhichPowerUpToDrop == 2)
             {
                 Instantiate(tripleShotPowerUpPrefab, gameObject.transform.position, gameObject.transform.rotation);
+            }
+            else if (randomValueForWhichPowerUpToDrop == 3 && player_manager.currentHealth <= 60)
+            {
+                Debug.Log("In : ");
+                if (healthPowerUpPrefab != null ) 
+                {
+                    Debug.Log("powerup");
+                    Instantiate(healthPowerUpPrefab, gameObject.transform.position, gameObject.transform.rotation);
+                }
             }
 
         }
@@ -636,9 +666,10 @@ public class Enemy_Manager : MonoBehaviour
 
                 }
                 else*/
-        if (viewportPosition.y < 0.3f)
+        if (viewportPosition.y < 0.4f)
         {
             position.y = mainCamera.ViewportToWorldPoint(new Vector2(viewportPosition.x, 0.99f)).y;
+            
 
         }
         transform.position = position;
@@ -648,4 +679,11 @@ public class Enemy_Manager : MonoBehaviour
 
         return isDestroyed;
     }
+
+    public void ResetTotalScore()
+    {
+        score = 0;
+    }
+
+
 }

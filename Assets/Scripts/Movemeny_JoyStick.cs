@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Movemeny_JoyStick : MonoBehaviour
+public class Movemeny_JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
     public GameObject joyStick;
     public GameObject joyStickBG;
@@ -13,7 +13,7 @@ public class Movemeny_JoyStick : MonoBehaviour
     private float joyStickradius;
 
     // Add a sensitivity variable
-    public float sensitivity = 0.7f;
+    public float sensitivity = 0.5f;
 
     void Start()
     {
@@ -21,31 +21,41 @@ public class Movemeny_JoyStick : MonoBehaviour
         joyStickradius = joyStickBG.GetComponent<RectTransform>().sizeDelta.y / 4;
     }
 
-    public void PointDown()
+    public void OnPointerDown(PointerEventData eventData)
     {
-        joyStick.transform.position = Input.mousePosition;
-        joyStickBG.transform.position = Input.mousePosition;
-        joyStickTouchPos = Input.mousePosition;
+        joyStick.transform.position = eventData.position;
+        joyStickBG.transform.position = eventData.position;
+        joyStickTouchPos = eventData.position;
     }
 
-    public void Drag(BaseEventData baseEventData)
+    public void OnDrag(PointerEventData eventData)
     {
-        PointerEventData pointerEventData = baseEventData as PointerEventData;
-        Vector2 dragPos = pointerEventData.position;
+        Vector2 dragPos = eventData.position;
         joyStickVec = (dragPos - joyStickTouchPos).normalized;
 
+
+
+
+
+
+
+
         float joyStickDist = Vector2.Distance(dragPos, joyStickTouchPos);
+/*        joyStick.transform.position  = joyStickTouchPos + joyStickVec * joyStickDist;
+*/
         if (joyStickDist < joyStickradius)
         {
             joyStick.transform.position = joyStickTouchPos + joyStickVec * joyStickDist;
         }
         else
         {
-            joyStick.transform.position = joyStickTouchPos + joyStickVec * joyStickradius;
+            joyStick.transform.position = joyStickTouchPos + joyStickVec * joyStickDist;
+            joyStickBG.transform.position = joyStickTouchPos + joyStickVec * joyStickDist;
+
         }
     }
 
-    public void PointerUp()
+    public void OnPointerUp(PointerEventData eventData)
     {
         joyStickVec = Vector2.zero;
         joyStick.transform.position = joyStickOriginalPos;

@@ -1,4 +1,5 @@
 using DG.Tweening;
+using DG.Tweening.Core.Easing;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -49,7 +50,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject level10BossPrefab_2;
     public GameObject level10BossPrefab_3;
     float randomFloatTime;
-
+    GameManager gameManager;
 
     public GameObject pauseMenuUI;
     public GameObject LevelFinsihUI;
@@ -66,10 +67,12 @@ public class SpawnManager : MonoBehaviour
 
     private void Awake()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
     }
     private void Start()
     {
+        /*gameManager.HighScoreText();*/
         incomingBossText.SetActive(false);
 
         LevelFinsihUI.SetActive(false);

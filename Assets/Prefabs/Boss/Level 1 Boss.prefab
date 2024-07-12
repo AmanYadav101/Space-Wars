@@ -459,10 +459,12 @@ MonoBehaviour:
   bossMaxHealth: 1000
   currentHealth: 0
   healthBar: {fileID: 8698336795079767630}
+  gameManager: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
   tripleShotPowerUpPrefab: {fileID: 6787831366609411165, guid: af1d2aa1ce8d5b940b5bdb945e5cd82b, type: 3}
+  healthPowerUpPrefab: {fileID: 151627348898494007, guid: 1c20529aff4a2554d887781ee064ef2c, type: 3}
   moveSpeed: 2
   player_manager: {fileID: 3868101149475518442, guid: 04862e7313bd34c4ea6352e281035497, type: 3}
 --- !u!1 &3060093771932844258

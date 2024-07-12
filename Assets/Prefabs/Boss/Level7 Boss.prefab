@@ -105,6 +105,7 @@ MonoBehaviour:
   enemyProjectile: {fileID: 5555599234428668953, guid: 390e40ae40bb37d47887bf388d0bb4b1, type: 3}
   bossProjectile1: {fileID: 7238650832050970631, guid: 99e8e617ad99bba4e8506a868ee0b056, type: 3}
   bossProjectile2: {fileID: 7905076762533508821, guid: 31f9dd67d6b54274a956b06ca94e5560, type: 3}
+  level1BossProjectilePrefab: {fileID: 0}
   level2BossProjectilePrefab: {fileID: 3448962863050926423, guid: 98070238596f48c4890aed223005cdb7, type: 3}
   level3BossProjectilePrefab: {fileID: 1536900268799904939, guid: 75b5943cba0adfb4fbd93db808fc1042, type: 3}
   level4BossProjectilePrefab: {fileID: 3808840094458375905, guid: 3469c4775ff7a874c8817cbc8aea604d, type: 3}
@@ -126,10 +127,12 @@ MonoBehaviour:
   bossMaxHealth: 1000
   currentHealth: 0
   healthBar: {fileID: 7737275885187162440}
+  gameManager: {fileID: 0}
   enemyProjectileClone: {fileID: 0}
   speedUpPowerUpPrefab: {fileID: 4126340244981803166, guid: 27c70771c9ee90d4194dc8ba2e1e8fc7, type: 3}
   shieldPowerUpPrefab: {fileID: 5932225338615698667, guid: de16d76b8d7cab34c8bdc68903ba572a, type: 3}
   tripleShotPowerUpPrefab: {fileID: 6787831366609411165, guid: af1d2aa1ce8d5b940b5bdb945e5cd82b, type: 3}
+  healthPowerUpPrefab: {fileID: 151627348898494007, guid: 1c20529aff4a2554d887781ee064ef2c, type: 3}
   moveSpeed: 2
   player_manager: {fileID: 3868101149475518442, guid: 04862e7313bd34c4ea6352e281035497, type: 3}
 --- !u!60 &6054050371309530273

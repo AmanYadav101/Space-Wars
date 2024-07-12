@@ -1,6 +1,4 @@
-
-
-
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,9 +7,13 @@ public class GameManager : MonoBehaviour
     int savedLevelIndex;
     public GameObject pauseMenuUI;
 /*    public GameObject LevelsUI;
-*/    private bool isPaused = false; 
-
-
+*/    private bool isPaused = false;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI totaScoreText;
+    public TextMeshProUGUI highScoreText;
+    public TextMeshProUGUI DeadMenuHighScore;
+    int score = 0;
+Enemy_Manager enemyManager;
     // Start is called before the first frame update
     public void Start()
     {
@@ -22,10 +24,13 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("SavedLevel", SceneManager.GetActiveScene().buildIndex);
             PlayerPrefs.Save();
         }
-
         // Load the saved level index
         savedLevelIndex = PlayerPrefs.GetInt("SavedLevel", 1); // Default to endless scene if not found
 
+    }
+    private void Awake()
+    {
+        enemyManager = GetComponent<Enemy_Manager>();
     }
     public void NextLevel()
     {
@@ -108,11 +113,22 @@ public class GameManager : MonoBehaviour
     /*public void NextLevel()
     {
         SceneManager.LoadScene(savedLevelIndex + 1);
-    }
+       
 */
     public void Restart()
     {
+
         SceneManager.LoadScene(savedLevelIndex);
+        
+        Enemy_Manager.score = 0;
+        UpdateScoreText(Enemy_Manager.score);
+
+        if (enemyManager != null)
+        {
+            enemyManager.ResetTotalScore();
+        }
+
+
     }
 
     public void LevelsGoBack()
@@ -125,4 +141,38 @@ public class GameManager : MonoBehaviour
         return isPaused;
     }
 
+
+    public void UpdateScoreText(int score)
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = score.ToString();
+        }
+        UpdateTotalScoreText(score);
+    }
+
+    public void UpdateTotalScoreText(int score)
+    {
+        if (totaScoreText != null) 
+        {
+             totaScoreText.text =   "Enemies Annihilated: " + score.ToString();
+        }
+
+    }
+
+    public void UpdateHighScoreText(int highScore)
+    {
+        if (highScoreText != null) 
+        {
+            highScoreText.text = "High Score: " + highScore.ToString();
+        }
+    }
+    public void HighScoreText()
+    {
+        if (highScoreText != null)
+        {
+            highScoreText.text = "High Score: " + PlayerPrefs.GetInt("HighScore");
+            DeadMenuHighScore.text = "High Score: " + PlayerPrefs.GetInt("HighScore");
+        }
+    }
 }

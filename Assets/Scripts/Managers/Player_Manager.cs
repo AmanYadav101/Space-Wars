@@ -27,7 +27,7 @@ public class Player_Manager : MonoBehaviour
     //Shield
     public GameObject shield;
     private bool isInvincible=false;
-     PolygonCollider2D polygonCollider2D;
+    PolygonCollider2D polygonCollider2D;
     bool isMoving = false;
     public GameObject PlayerDeadUI;
     private bool isDestroyed = false;
@@ -35,11 +35,11 @@ public class Player_Manager : MonoBehaviour
     bool isMoveingLeft = false;
     bool isMoveingRight = false;
     
-
+    GameManager gameManager;
     private Vector2 startTouchPosition;
     private Vector2 currentTouchPosition;
     private bool isSwiping = false;
-
+    AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
@@ -58,14 +58,19 @@ public class Player_Manager : MonoBehaviour
 
     private void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+
         movemeny_JoyStick = GameObject.FindObjectOfType<Movemeny_JoyStick>();
             rb = GetComponent<Rigidbody2D>();
             polygonCollider2D = gameObject.GetComponent<PolygonCollider2D>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
+
     {
+
         if (!isDestroyed) 
         { 
         Movement();
@@ -76,6 +81,8 @@ public class Player_Manager : MonoBehaviour
         if(currentHealth == 0) 
         { 
         StartCoroutine(DestroyPlayer());
+
+            //for Resetting the score when the player dies. or else score will remain the same and will increment from the last score you ad when u died.
         }
 
     }
@@ -130,13 +137,13 @@ public class Player_Manager : MonoBehaviour
         }
 
        
-        if (movemeny_JoyStick.joyStickVec.y != 0 || movemeny_JoyStick.joyStickVec.x != 0)
+        if (movemeny_JoyStick.joyStickVec != Vector2.zero)
         {
             // Apply sensitivity factor
-            Vector3 move = new Vector3(movemeny_JoyStick.joyStickVec.x * movemeny_JoyStick.sensitivity * moveSpeed * 2f * Time.deltaTime,
+            Vector3 move = new Vector3(movemeny_JoyStick.joyStickVec.x * movemeny_JoyStick.sensitivity * moveSpeed * Time.deltaTime,
                                        movemeny_JoyStick.joyStickVec.y * movemeny_JoyStick.sensitivity * moveSpeed * Time.deltaTime, 0);
             Vector3 projectedPosition = transform.position + move;
-            Vector2 projectedViewportPosition = Camera.main.WorldToViewportPoint(projectedPosition);
+            Vector2 projectedViewportPosition = mainCamera.WorldToViewportPoint(projectedPosition);
 
             if (projectedViewportPosition.y >= 0.1f && projectedViewportPosition.y <= 0.25f)
             {
@@ -145,11 +152,12 @@ public class Player_Manager : MonoBehaviour
             }
             else if (projectedViewportPosition.y < 0.1f || projectedViewportPosition.y > 0.25f)
             {
+                
                 transform.Translate(new Vector3(movemeny_JoyStick.joyStickVec.x * movemeny_JoyStick.sensitivity * moveSpeed * Time.deltaTime, 0, 0));
+                
                 isMoving = true;
             }
         }
-
         Vector3 clampedPosition = mainCamera.WorldToViewportPoint(transform.position);
         clampedPosition.x = Mathf.Clamp(clampedPosition.x, 0.1f, 0.9f);
         clampedPosition.y = Mathf.Clamp(clampedPosition.y, 0.1f, 0.25f);
@@ -264,6 +272,7 @@ public class Player_Manager : MonoBehaviour
 
     public IEnumerator DestroyPlayer()
     {
+
         isDestroyed = true;
         leftWingFire.SetActive(false);
         rightWingFire.SetActive(false);
@@ -277,7 +286,6 @@ public class Player_Manager : MonoBehaviour
         /*        gameObject.SetActive(false);
         */
         Destroy(gameObject);
-
         PlayerDeadUI.SetActive(true);
         
 
@@ -340,8 +348,26 @@ public class Player_Manager : MonoBehaviour
 
     }
 
+    public void HealthPowerUpCoRoutine()
+    {
+        audioManager.PlaySFX(audioManager.powerupPickupSFX);
+        if (currentHealth < 100)
+        {
+            Debug.Log("Before " + currentHealth);
+            currentHealth += 20;
+            if (currentHealth > 100) 
+            {
+                currentHealth = 100;
+            }
+            healthBar.SetHealth(currentHealth);
+            Debug.Log("After " + currentHealth);
+
+        }
+        
+    }
+
     //Getters and Setters
-    
+
     //Starting Move Speed
     public int GetMoveSpeed()
     {
